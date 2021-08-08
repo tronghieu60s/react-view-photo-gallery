@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: path.join(__dirname, "src", "index.tsx"),
+  entry: path.resolve(__dirname, "index.js"),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.bundle.js",
@@ -12,6 +12,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "ts-loader",
+        },
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
@@ -19,13 +26,6 @@ module.exports = {
           options: {
             presets: ["@babel/preset-env", "@babel/preset-react"],
           },
-        },
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "ts-loader",
         },
       },
     ],
