@@ -1,87 +1,164 @@
+@mixin user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin square($size: 0) {
+  width: $size;
+  height: $size;
+}
+
+@mixin fixed($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin absolute($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .gallery-container {
+  @include user-select-none;
+  @include fixed($top: 0, $left: 0);
+  @include square(100%);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
   outline: none;
   z-index: 100000;
+}
 
-  .gallery-outer,
-  .gallery-inner,
-  .gallery-bg,
-  .gallery-stage {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+.gallery-bg {
+  @include absolute(0, 0, 0, 0);
+  opacity: 0.9;
+  background: #1e1e1e;
+}
+
+.gallery-inner {
+  @include absolute(0, 0, 0, 0);
+  backdrop-filter: blur(5px);
+  z-index: 110000;
+}
+
+.gallery-button {
+  @include square(44px);
+  line-height: 35px;
+  font-size: 0.95em;
+  background: rgba(30, 30, 30, 0.6);
+  display: inline-block;
+  padding: 10px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+  svg {
+    @include square(20px);
+    font-size: inherit;
+    path {
+      fill: #ccc;
+    }
   }
 
-  .gallery-bg {
-    opacity: 0.9;
-    background: #1e1e1e;
+  &:hover svg path {
+    fill: #fff;
+  }
+}
+
+.gallery-info {
+  @include absolute($top: 0, $left: 0);
+  color: #ccc;
+  font-size: 0.85em;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 10px;
+}
+
+.gallery-toolbar {
+  @include absolute($top: 0, $right: 0);
+  width: 308px;
+  height: 44px;
+}
+
+.gallery-navigation {
+  &__left,
+  &__right {
+    @include absolute($top: 50%, $left: 0);
+    transform: translateY(-50%);
+    margin: 0 1em;
+    border-radius: 5px;
   }
 
-  .gallery-inner {
-    backdrop-filter: blur(5px);
-    z-index: 110000;
+  &__right {
+    @include absolute($top: 50%, $right: 0);
+  }
+}
 
-    .gallery-button {
-      font-size: 0.9em;
-      background: rgba(30, 30, 30, 0.6);
-      display: inline-block;
-      width: 44px;
-      height: 44px;
-      margin: 0;
-      padding: 10px;
-      border: 0;
-      border-radius: 0;
-      box-shadow: none;
-      cursor: pointer;
-      i.fa {
-        color: #ccc;
-        font-size: inherit;
-        font-style: normal;
-        font-weight: 400;
-      }
-    }
+.gallery-stage {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
 
-    &-top {
-      display: flex;
-      justify-content: space-between;
+  &__slide {
+    @include flex-center;
+    @include square(100%);
+  }
 
-      .gallery-info {
-        color: #ccc;
-        font-size: 13px;
-        height: 44px;
-        left: 0;
-        line-height: 44px;
-        min-width: 44px;
-        mix-blend-mode: difference;
-        padding: 0 10px;
-        pointer-events: none;
-        top: 0;
-      }
-      .gallery-toolbar {
-        display: flex;
-        width: 308px;
-        height: 44px;
-      }
-    }
+  &__content {
+    @include square(300px);
+    cursor: zoom-in;
+  }
 
-    &-navigation {
-      .gallery-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        margin: 0 1em;
-        border-radius: 5px;
-        &:nth-child(2) {
-          right: 0;
-        }
-      }
+  &__image {
+    @include square(100%);
+  }
+}
+
+.gallery-caption {
+  @include absolute();
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.15) 65%,
+    rgba(0, 0, 0, 0.075) 75.5%,
+    rgba(0, 0, 0, 0.037) 82.84999999999999%,
+    rgba(0, 0, 0, 0.019) 88%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  bottom: 0;
+  color: #eee;
+  font-size: 14px;
+  font-weight: 400;
+  left: 0;
+  line-height: 1.5;
+  padding: 75px 44px 25px 44px;
+  pointer-events: none;
+  right: 0;
+  text-align: center;
+  z-index: 110000;
+
+  &__body {
+    max-height: 50vh;
+    overflow: auto;
+    pointer-events: all;
+    h4,
+    p {
+      margin: 4px 0;
+      word-wrap: break-word;
     }
   }
 }
