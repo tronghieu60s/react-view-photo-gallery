@@ -2,7 +2,7 @@ import "./PhotoGallery.scss";
 
 export default function PhotoGallery() {
   return (
-    <div className="gallery-container">
+    <div className="gallery-container gallery-container-show-thumbs">
       <div className="gallery-bg"></div>
       <div className="gallery-inner">
         <div className="gallery-info">
@@ -80,21 +80,26 @@ export default function PhotoGallery() {
           </div>
         </div>
       </div>
-      <div className="gallery-thumbs gallery-thumbs-x">
+      <div className="gallery-thumbs">
         <div className="gallery-thumbs__list">
-          <a
-            href=""
+          <div
             style={{
               backgroundImage: "url(https://i.imgur.com/QQCkPzN.jpeg)",
             }}
-          ></a>
-          <a
-            href=""
+            className="gallery-thumbs__item"
+          ></div>
+          <div
             style={{
               backgroundImage: "url(https://i.imgur.com/QQCkPzN.jpeg)",
             }}
-            className="gallery-thumbs-active"
-          ></a>
+            className="gallery-thumbs__item active"
+          ></div>
+          <div
+            style={{
+              backgroundImage: "url(https://i.imgur.com/QQCkPzN.jpeg)",
+            }}
+            className="gallery-thumbs__item"
+          ></div>
         </div>
       </div>
     </div>
