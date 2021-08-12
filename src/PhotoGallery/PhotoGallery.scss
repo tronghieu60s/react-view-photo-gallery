@@ -8,6 +8,16 @@ $thumb-size-mobile: 75px;
   user-select: none;
 }
 
+@mixin visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+@mixin hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
 @mixin square($size: 0) {
   width: $size;
   height: $size;
@@ -175,7 +185,12 @@ $thumb-size-mobile: 75px;
   }
 }
 
+.gallery-container-show-thumbs .gallery-thumbs {
+  @include visible();
+}
+
 .gallery-thumbs {
+  @include hidden();
   @include absolute(auto, 0, 0, 0);
   width: auto;
   height: auto;
