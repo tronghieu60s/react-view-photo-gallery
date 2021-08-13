@@ -1,7 +1,13 @@
-export default function GalleryInfo() {
-    return (
-      <div className="gallery-info">
-        <span>1</span>&nbsp;/&nbsp;<span>2</span>
-      </div>
-    );
+type Props = {
+  currentImage: number;
+  numberOfImages: number;
+};
+
+export default function GalleryInfo(props: Props) {
+  const { currentImage, numberOfImages } = props;
+  return (
+    <div className="gallery-info">
+      <span>{currentImage}</span>&nbsp;/&nbsp;<span>{numberOfImages}</span>
+    </div>
+  );
 }

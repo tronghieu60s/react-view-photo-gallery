@@ -1,10 +1,17 @@
-export default function GalleryThumbsItem() {
+import { ImageType } from "../types";
+
+type Props = {
+  image: ImageType;
+  active: boolean;
+};
+
+export default function GalleryThumbsItem({ image, active }: Props) {
+  const backgroundImage = `url(${image.src})`;
+  const activeClass = active ? " active" : "";
   return (
     <div
-      style={{
-        backgroundImage: "url(https://i.imgur.com/QQCkPzN.jpeg)",
-      }}
-      className="gallery-thumbs__item"
+      style={{ backgroundImage }}
+      className={`gallery-thumbs__item${activeClass}`}
     ></div>
   );
 }
