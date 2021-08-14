@@ -1,4 +1,4 @@
-import { ImageType } from "../types";
+import { ImageType } from "../../types";
 
 type Props = {
   images: Array<ImageType>;
@@ -8,7 +8,7 @@ type Props = {
 
 const sizeImage = 150;
 
-export default function GalleryThumbs(props: Props) {
+export default function PGThumbs(props: Props) {
   const { currentImageIndex, images } = props;
   const { onSetCurrentImageIndex } = props;
   const widthList = images.length * (sizeImage + 9);
@@ -24,7 +24,7 @@ export default function GalleryThumbs(props: Props) {
         onClick={() => onSetCurrentImageIndex(index)}
       ></div>
     ));
-  }
+  };
 
   return (
     <div className="gl-thumbs">

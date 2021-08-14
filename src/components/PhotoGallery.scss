@@ -134,11 +134,12 @@ $thumb-size-mobile: 75px;
 
   &__slide {
     @include flex-center;
-    @include square(100%);
+    width: 100%;
+    height: 100%;
   }
 
   &__content {
-    max-width: 300px;
+    width: 300px;
     padding: 0 10px;
     cursor: zoom-in;
   }

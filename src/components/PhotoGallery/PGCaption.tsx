@@ -1,6 +1,6 @@
-import { ImageType } from "../types";
+import { ImageType } from "../../types";
 
-export default function GalleryCaption({
+export default function PGCaption({
   currentImage,
 }: {
   currentImage: ImageType;

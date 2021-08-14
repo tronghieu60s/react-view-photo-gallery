@@ -3,11 +3,12 @@ type Props = {
   numberOfImages: number;
 };
 
-export default function GalleryInfo(props: Props) {
+export default function PGInfo(props: Props) {
   const { currentImageIndex, numberOfImages } = props;
   return (
     <div className="gl-info">
-      <span>{currentImageIndex}</span>&nbsp;/&nbsp;<span>{numberOfImages}</span>
+      <span>{currentImageIndex + 1}</span>&nbsp;/&nbsp;
+      <span>{numberOfImages}</span>
     </div>
   );
 }
