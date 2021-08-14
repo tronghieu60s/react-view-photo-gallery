@@ -32,8 +32,12 @@ export default function PhotoGallery(props: Props) {
     <GalleryMain
       isOpenThumbs={isOpenThumbs}
       images={images}
+      numberOfImages={images.length}
+      currentImage={images[currentImageIndex]}
       currentImageIndex={currentImageIndex}
       /* Actions */
+      onToggleThumbs={() => setIsOpenThumbs(!isOpenThumbs)}
+      onSetCurrentImageIndex={(index) => setCurrentImageIndex(index)}
       onPreviousImage={onPreviousImage}
       onNextImage={onNextImage}
     />

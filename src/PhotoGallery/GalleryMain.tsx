@@ -9,7 +9,11 @@ import GalleryToolbar from "./GalleryToolbar";
 type Props = {
   isOpenThumbs: boolean;
   images: Array<ImageType>;
+  numberOfImages: number;
+  currentImage: ImageType;
   currentImageIndex: number;
+  onToggleThumbs: () => void;
+  onSetCurrentImageIndex: (index: number) => void;
   onPreviousImage: () => void;
   onNextImage: () => void;
 };
@@ -18,31 +22,38 @@ export default function GalleryMain(props: Props) {
   const {
     isOpenThumbs,
     images,
+    numberOfImages,
+    currentImage,
     currentImageIndex,
+  } = props;
+  const {
+    onToggleThumbs,
+    onSetCurrentImageIndex,
     onPreviousImage,
     onNextImage,
   } = props;
-  const isOpenThumbsClass = isOpenThumbs
-    ? " gallery-container-show-thumbs"
-    : "";
 
   return (
-    <div className={`gallery-container${isOpenThumbsClass}`}>
-      <div className="gallery-bg"></div>
-      <div className="gallery-inner">
+    <div className={`gl-container${isOpenThumbs ? " gl-show-thumbs" : ""}`}>
+      <div className="gl-bg"></div>
+      <div className="gl-inner">
         <GalleryInfo
-          currentImage={currentImageIndex + 1}
-          numberOfImages={images.length}
+          currentImageIndex={currentImageIndex}
+          numberOfImages={numberOfImages}
         />
-        <GalleryToolbar />
+        <GalleryToolbar onToggleThumbs={onToggleThumbs} />
         <GalleryNavigation
           onPreviousImage={onPreviousImage}
           onNextImage={onNextImage}
         />
         <GalleryStage image={images[currentImageIndex]} />
-        <GalleryCaption />
+        <GalleryCaption currentImage={currentImage} />
       </div>
-      <GalleryThumbs currentImage={currentImageIndex} images={images} />
+      <GalleryThumbs
+        images={images}
+        currentImageIndex={currentImageIndex}
+        onSetCurrentImageIndex={onSetCurrentImageIndex}
+      />
     </div>
   );
 }

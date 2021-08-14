@@ -1,14 +1,13 @@
 import { ImageType } from "../types";
-import GalleryStageItem from "./GalleryStageItem";
 
-type Props = {
-  image: ImageType,
-}
-
-export default function GalleryStage({image}: Props) {
+export default function GalleryStage({ image }: { image: ImageType }) {
   return (
-    <div className="gallery-stage">
-      <GalleryStageItem image={image} />
+    <div className="gl-stage">
+      <div className="gl-stage__slide">
+        <div className="gl-stage__content">
+          <img src={image.src} alt="" className="gl-stage__image" />
+        </div>
+      </div>
     </div>
   );
 }
