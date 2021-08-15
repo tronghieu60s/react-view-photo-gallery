@@ -4,15 +4,15 @@ import { ImageType } from "../../types";
 type Props = {
   images: Array<ImageType>;
   currentImageIndex: number;
+  sizeThumbsImage: number;
   onSetCurrentImageIndex: (index: number) => void;
 };
-
-const sizeImage = 150;
 
 export default function PGThumbs(props: Props) {
   const thumbsRef = useRef<any>(null);
   const thumbsItemRef = useRef<any>(null);
-  const { currentImageIndex, images, onSetCurrentImageIndex } = props;
+  const { images, currentImageIndex, sizeThumbsImage, onSetCurrentImageIndex } =
+    props;
 
   useEffect(() => {
     const thumbsItemLeft = thumbsItemRef?.current?.offsetLeft;
@@ -26,7 +26,11 @@ export default function PGThumbs(props: Props) {
         <div
           key={index}
           ref={active ? thumbsItemRef : null}
-          style={{ backgroundImage: `url(${image.src})` }}
+          style={{
+            width: sizeThumbsImage,
+            height: sizeThumbsImage,
+            backgroundImage: `url(${image.src})`,
+          }}
           className={`gl-thumbs__item${active ? " active" : ""}`}
           onClick={() => onSetCurrentImageIndex(index)}
         ></div>
@@ -38,7 +42,7 @@ export default function PGThumbs(props: Props) {
     <div className="gl-thumbs" ref={thumbsRef}>
       <div
         className="gl-thumbs__list"
-        style={{ width: images.length * (sizeImage + 9) }}
+        style={{ width: images.length * (sizeThumbsImage + 9) }}
       >
         {renderItems()}
       </div>

@@ -184,6 +184,10 @@ $thumb-size-mobile: 75px;
   }
 }
 
+.gl-show-thumbs .gl-thumbs {
+  @include visible();
+}
+
 .gl-thumbs {
   @include hidden();
   @include absolute(auto, 0, 0, 0);
@@ -210,9 +214,6 @@ $thumb-size-mobile: 75px;
 
   &__item {
     @include square($thumb-size);
-    @media (max-width: 480px), (max-height: 480px) {
-      @include square($thumb-size-mobile);
-    }
     max-height: calc(100% - 8px);
     max-width: calc(50% - 4px);
     position: relative;
@@ -251,17 +252,6 @@ $thumb-size-mobile: 75px;
   transition-property: transform;
   transition-timing-function: linear;
   z-index: 110000;
-}
-
-.gl-show-thumbs .gl-inner {
-  bottom: $thumb-size;
-  @media (max-width: 480px), (max-height: 480px) {
-    bottom: $thumb-size-mobile;
-  }
-}
-
-.gl-show-thumbs .gl-thumbs {
-  @include visible();
 }
 
 // -----------------------------

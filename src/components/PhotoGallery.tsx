@@ -1,8 +1,8 @@
-import "./PhotoGallery.scss";
-import { useEffect, useRef, useState } from "react";
-import PGMain from "./PhotoGallery/PGMain";
+import { useEffect, useState } from "react";
 import { getFileExtension } from "../helpers/commonFunctions";
 import { ImageType } from "../types";
+import "./PhotoGallery.scss";
+import PGMain from "./PhotoGallery/PGMain";
 
 type Props = { images: Array<ImageType> };
 

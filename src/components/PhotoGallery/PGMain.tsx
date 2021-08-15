@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { ImageType } from "../../types";
 import PGCaption from "./PGCaption";
 import PGInfo from "./PGInfo";
@@ -26,6 +27,10 @@ type Props = {
   onNextImage: () => void;
 };
 
+const MOBILE_SIZE_IMAGE = 75;
+const TABLET_SIZE_IMAGE = 120;
+const DESKTOP_SIZE_IMAGE = 150;
+
 export default function PGMain(props: Props) {
   const {
     isFullscreen,
@@ -36,12 +41,41 @@ export default function PGMain(props: Props) {
     currentImage,
     currentImageIndex,
     currentProgress,
+    onOpenExternalLink,
+    onToggleFullScreen,
+    onToggleSlideshow,
+    onDownloadImage,
+    onToggleThumbs,
+    onSetCurrentImageIndex,
+    onPreviousImage,
+    onNextImage,
   } = props;
+
+  const [sizeThumbsImage, setSizeThumbsImage] = useState(0);
+
+  useEffect(() => {
+    handleSizeThumbsImage();
+    window.addEventListener("resize", handleSizeThumbsImage);
+
+    function handleSizeThumbsImage() {
+      const widthWindow = window.screen.width;
+      if (widthWindow < 425) {
+        setSizeThumbsImage(MOBILE_SIZE_IMAGE);
+      } else if (widthWindow < 768) {
+        setSizeThumbsImage(TABLET_SIZE_IMAGE);
+      } else {
+        setSizeThumbsImage(DESKTOP_SIZE_IMAGE);
+      }
+    }
+  }, []);
 
   return (
     <div className={`gl-container${isOpenThumbs ? " gl-show-thumbs" : ""}`}>
       <div className="gl-bg"></div>
-      <div className="gl-inner">
+      <div
+        className="gl-inner"
+        style={{ bottom: isOpenThumbs ? sizeThumbsImage : 0 }}
+      >
         <PGInfo
           currentImageIndex={currentImageIndex}
           numberOfImages={numberOfImages}
@@ -49,15 +83,15 @@ export default function PGMain(props: Props) {
         <PGToolbar
           isFullscreen={isFullscreen}
           isSlideshow={isSlideshow}
-          onOpenExternalLink={props.onOpenExternalLink}
-          onToggleFullScreen={props.onToggleFullScreen}
-          onToggleSlideshow={props.onToggleSlideshow}
-          onDownloadImage={props.onDownloadImage}
-          onToggleThumbs={props.onToggleThumbs}
+          onOpenExternalLink={onOpenExternalLink}
+          onToggleFullScreen={onToggleFullScreen}
+          onToggleSlideshow={onToggleSlideshow}
+          onDownloadImage={onDownloadImage}
+          onToggleThumbs={onToggleThumbs}
         />
         <PGNavigation
-          onPreviousImage={props.onPreviousImage}
-          onNextImage={props.onNextImage}
+          onPreviousImage={onPreviousImage}
+          onNextImage={onNextImage}
         />
         <PGStage
           image={images[currentImageIndex]}
@@ -70,7 +104,8 @@ export default function PGMain(props: Props) {
       <PGThumbs
         images={images}
         currentImageIndex={currentImageIndex}
-        onSetCurrentImageIndex={props.onSetCurrentImageIndex}
+        sizeThumbsImage={sizeThumbsImage}
+        onSetCurrentImageIndex={onSetCurrentImageIndex}
       />
     </div>
   );
