@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { ImageType } from "../../types";
 
 type Props = {
@@ -9,26 +10,36 @@ type Props = {
 const sizeImage = 150;
 
 export default function PGThumbs(props: Props) {
-  const { currentImageIndex, images } = props;
-  const { onSetCurrentImageIndex } = props;
-  const widthList = images.length * (sizeImage + 9);
+  const thumbsRef = useRef<any>(null);
+  const thumbsItemRef = useRef<any>(null);
+  const { currentImageIndex, images, onSetCurrentImageIndex } = props;
+
+  useEffect(() => {
+    const thumbsItemLeft = thumbsItemRef?.current?.offsetLeft;
+    thumbsRef.current.scrollLeft = thumbsItemLeft;
+  }, [currentImageIndex]);
 
   const renderItems = () => {
-    return images.map((image, index) => (
-      <div
-        key={index}
-        style={{ backgroundImage: `url(${image.src})` }}
-        className={`gl-thumbs__item${
-          currentImageIndex === index ? " active" : ""
-        }`}
-        onClick={() => onSetCurrentImageIndex(index)}
-      ></div>
-    ));
+    return images.map((image, index) => {
+      const active = currentImageIndex === index;
+      return (
+        <div
+          key={index}
+          ref={active ? thumbsItemRef : null}
+          style={{ backgroundImage: `url(${image.src})` }}
+          className={`gl-thumbs__item${active ? " active" : ""}`}
+          onClick={() => onSetCurrentImageIndex(index)}
+        ></div>
+      );
+    });
   };
 
   return (
-    <div className="gl-thumbs">
-      <div className="gl-thumbs__list" style={{ width: widthList }}>
+    <div className="gl-thumbs" ref={thumbsRef}>
+      <div
+        className="gl-thumbs__list"
+        style={{ width: images.length * (sizeImage + 9) }}
+      >
         {renderItems()}
       </div>
     </div>

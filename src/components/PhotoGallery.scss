@@ -192,6 +192,7 @@ $thumb-size-mobile: 75px;
   padding: 0 10px;
   box-sizing: border-box;
   background: rgba(0, 0, 0, 0.3);
+  scroll-behavior: smooth;
   overflow-x: auto;
   z-index: 110000;
 
