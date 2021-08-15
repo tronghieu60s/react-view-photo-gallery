@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
+import {
+  ParametersProps,
+  ParametersProvider,
+} from "../contexts/ParametersContext";
 import { getFileExtension } from "../helpers/commonFunctions";
-import { ImageType } from "../types";
 import "./PhotoGallery.scss";
 import PGMain from "./PhotoGallery/PGMain";
 
-type Props = { images: Array<ImageType> };
-
 const SLIDE_SHOW_MILLISECONDS = 3000;
 
-export default function PhotoGallery(props: Props) {
+export default function PhotoGallery(props: ParametersProps) {
   const { images } = props;
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isSlideshow, setIsSlideshow] = useState(false);
@@ -74,26 +75,28 @@ export default function PhotoGallery(props: Props) {
   };
 
   return (
-    <PGMain
-      isFullscreen={isFullscreen}
-      isSlideshow={isSlideshow}
-      isOpenThumbs={isOpenThumbs}
-      images={images}
-      numberOfImages={images.length}
-      currentImage={images[currentImageIndex]}
-      currentImageIndex={currentImageIndex}
-      currentProgress={currentProgress}
-      /* Actions */
-      onOpenExternalLink={() =>
-        window.open(images[currentImageIndex].src, "_blank")
-      }
-      onToggleFullScreen={onToggleFullScreen}
-      onToggleSlideshow={() => setIsSlideshow(!isSlideshow)}
-      onDownloadImage={onDownloadImage}
-      onToggleThumbs={() => setIsOpenThumbs(!isOpenThumbs)}
-      onSetCurrentImageIndex={(index) => setCurrentImageIndex(index)}
-      onPreviousImage={onPreviousImage}
-      onNextImage={onNextImage}
-    />
+    <ParametersProvider {...props}>
+      <PGMain
+        isFullscreen={isFullscreen}
+        isSlideshow={isSlideshow}
+        isOpenThumbs={isOpenThumbs}
+        images={images}
+        numberOfImages={images.length}
+        currentImage={images[currentImageIndex]}
+        currentImageIndex={currentImageIndex}
+        currentProgress={currentProgress}
+        /* Actions */
+        onOpenExternalLink={() =>
+          window.open(images[currentImageIndex].src, "_blank")
+        }
+        onToggleFullScreen={onToggleFullScreen}
+        onToggleSlideshow={() => setIsSlideshow(!isSlideshow)}
+        onDownloadImage={onDownloadImage}
+        onToggleThumbs={() => setIsOpenThumbs(!isOpenThumbs)}
+        onSetCurrentImageIndex={(index) => setCurrentImageIndex(index)}
+        onPreviousImage={onPreviousImage}
+        onNextImage={onNextImage}
+      />
+    </ParametersProvider>
   );
 }

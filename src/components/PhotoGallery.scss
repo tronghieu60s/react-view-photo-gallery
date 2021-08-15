@@ -60,6 +60,10 @@ $thumb-size-mobile: 75px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   outline: none;
   z-index: 100000;
+
+  &-hidden {
+    @include hidden;
+  }
 }
 
 .gl-bg {

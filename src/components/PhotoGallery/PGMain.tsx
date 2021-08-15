@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import ParametersContext, {
+  ParametersProps,
+} from "../../contexts/ParametersContext";
 import { ImageType } from "../../types";
 import PGCaption from "./PGCaption";
 import PGInfo from "./PGInfo";
@@ -53,6 +56,8 @@ export default function PGMain(props: Props) {
 
   const [sizeThumbsImage, setSizeThumbsImage] = useState(0);
 
+  const { show } = useContext<ParametersProps>(ParametersContext);
+
   useEffect(() => {
     handleSizeThumbsImage();
     window.addEventListener("resize", handleSizeThumbsImage);
@@ -70,7 +75,11 @@ export default function PGMain(props: Props) {
   }, []);
 
   return (
-    <div className={`gl-container${isOpenThumbs ? " gl-show-thumbs" : ""}`}>
+    <div
+      className={`gl-container${!show ? " gl-container-hidden" : ""}${
+        isOpenThumbs ? " gl-show-thumbs" : ""
+      }`}
+    >
       <div className="gl-bg"></div>
       <div
         className="gl-inner"
