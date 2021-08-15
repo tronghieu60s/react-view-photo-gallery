@@ -54,6 +54,7 @@ $thumb-size-mobile: 75px;
 // Style Photo Gallery ---------
 // -----------------------------
 .gl-container {
+  @include user-select-none;
   @include fixed($top: 0, $left: 0);
   @include square(100%);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -108,7 +109,7 @@ $thumb-size-mobile: 75px;
 
 .gl-toolbar {
   @include absolute($top: 0, $right: 0);
-  width: 308px;
+  width: 264px;
   height: 44px;
 }
 
@@ -141,7 +142,7 @@ $thumb-size-mobile: 75px;
   &__content {
     width: 300px;
     padding-bottom: 60px;
-    cursor: zoom-in;
+    cursor: auto;
   }
 
   &__image {

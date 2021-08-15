@@ -32,9 +32,9 @@ export default function PGToolbar(props: Props) {
 
   return (
     <div className="gl-toolbar">
-      <button className="gl-button" title="Zoom">
+      {/* <button className="gl-button" title="Zoom">
         <IconsZoomIn />
-      </button>
+      </button> */}
       <button
         onClick={onOpenExternalLink}
         className="gl-button"
