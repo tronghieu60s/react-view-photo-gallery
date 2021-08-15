@@ -5,23 +5,27 @@ import {
   IconsGridAlt,
   IconsLinkExternal,
   IconsPlayCircle,
+  IconsStopCircle,
   IconsXCircle,
   IconsZoomIn,
 } from "./PGIcons";
 
 type Props = {
   isFullscreen: boolean;
+  isSlideshow: boolean;
   onOpenExternalLink: () => void;
   onToggleFullScreen: () => void;
+  onToggleSlideshow: () => void;
   onDownloadImage: () => void;
   onToggleThumbs: () => void;
 };
 
 export default function PGToolbar(props: Props) {
-  const { isFullscreen } = props;
+  const { isFullscreen, isSlideshow } = props;
   const {
     onOpenExternalLink,
     onToggleFullScreen,
+    onToggleSlideshow,
     onDownloadImage,
     onToggleThumbs,
   } = props;
@@ -45,8 +49,12 @@ export default function PGToolbar(props: Props) {
       >
         {!isFullscreen ? <IconsFullscreen /> : <IconsExitFullscreen />}
       </button>
-      <button className="gl-button" title="Start slideshow">
-        <IconsPlayCircle />
+      <button
+        onClick={onToggleSlideshow}
+        className="gl-button"
+        title="Start slideshow"
+      >
+        {isSlideshow ? <IconsStopCircle /> : <IconsPlayCircle />}
       </button>
       <button onClick={onDownloadImage} className="gl-button" title="Download">
         <IconsDownload />

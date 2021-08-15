@@ -2,19 +2,23 @@ import { ImageType } from "../../types";
 import PGCaption from "./PGCaption";
 import PGInfo from "./PGInfo";
 import PGNavigation from "./PGNavigation";
+import PGProgress from "./PGProgress";
 import PGStage from "./PGStage";
 import PGThumbs from "./PGThumbs";
 import PGToolbar from "./PGToolbar";
 
 type Props = {
   isFullscreen: boolean;
+  isSlideshow: boolean;
   isOpenThumbs: boolean;
   images: Array<ImageType>;
   numberOfImages: number;
   currentImage: ImageType;
   currentImageIndex: number;
+  currentProgress: number;
   onOpenExternalLink: () => void;
   onToggleFullScreen: () => void;
+  onToggleSlideshow: () => void;
   onDownloadImage: () => void;
   onToggleThumbs: () => void;
   onSetCurrentImageIndex: (index: number) => void;
@@ -25,11 +29,13 @@ type Props = {
 export default function PGMain(props: Props) {
   const {
     isFullscreen,
+    isSlideshow,
     isOpenThumbs,
     images,
     numberOfImages,
     currentImage,
     currentImageIndex,
+    currentProgress,
   } = props;
 
   return (
@@ -42,8 +48,10 @@ export default function PGMain(props: Props) {
         />
         <PGToolbar
           isFullscreen={isFullscreen}
+          isSlideshow={isSlideshow}
           onOpenExternalLink={props.onOpenExternalLink}
           onToggleFullScreen={props.onToggleFullScreen}
+          onToggleSlideshow={props.onToggleSlideshow}
           onDownloadImage={props.onDownloadImage}
           onToggleThumbs={props.onToggleThumbs}
         />
@@ -57,6 +65,7 @@ export default function PGMain(props: Props) {
           isOpenThumbs={isOpenThumbs}
         />
         <PGCaption currentImage={currentImage} />
+        <PGProgress currentProgress={currentProgress} />
       </div>
       <PGThumbs
         images={images}

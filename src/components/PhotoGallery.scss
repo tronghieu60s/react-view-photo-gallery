@@ -140,6 +140,7 @@ $thumb-size-mobile: 75px;
 
   &__content {
     width: 300px;
+    padding-bottom: 60px;
     cursor: zoom-in;
   }
 
@@ -238,6 +239,17 @@ $thumb-size-mobile: 75px;
       }
     }
   }
+}
+
+.gl-progress {
+  @include absolute($top: 0, $right: 0, $left: 0);
+  background: #f2930d;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: 0;
+  transition-property: transform;
+  transition-timing-function: linear;
+  z-index: 110000;
 }
 
 .gl-show-thumbs .gl-inner {
