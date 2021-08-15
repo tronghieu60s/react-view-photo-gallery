@@ -7,49 +7,52 @@ type Props = {
   isOpenThumbs: boolean;
 };
 
-const stageHeightSubtract = 120;
+const STAGE_WIDTH_SUBTRACT = 40;
+const STAGE_HEIGHT_SUBTRACT = 120;
 
 export default function PGStage(props: Props) {
   const { image, isFullscreen, isOpenThumbs } = props;
   const stageRef = useRef<any>(null);
-  const [isMaxWidthImage, setIsMaxWidthImage] = useState(false);
   const [loadImage, setLoadImage] = useState<HTMLImageElement>();
-  const [sizeImage, setSizeImage] = useState({ width: 0, height: 0 });
+  const [sizeImage, setSizeImage] = useState({ width: 0, height: 0, padding: 0 });
 
   useEffect(() => {
     const loadImage = new Image();
     loadImage.src = image.src;
-    loadImage.onload = () => loadSizeImage();
+    loadImage.onload = () => {
+      loadSizeImage();
+      setLoadImage(loadImage);
+      window.addEventListener("resize", loadSizeImage);
+    };
 
     function loadSizeImage() {
-      const widthStage = stageRef?.current?.clientWidth;
-      const heightStage = stageRef?.current?.clientHeight - stageHeightSubtract;
-      const ratioSize = loadImage.height / heightStage;
-      const widthImage = loadImage.width / ratioSize;
+      const widthStage = stageRef?.current?.clientWidth - STAGE_WIDTH_SUBTRACT;
+      const heightStage =
+        stageRef?.current?.clientHeight - STAGE_HEIGHT_SUBTRACT;
+      let ratioSize = loadImage.height / heightStage;
+      let widthImage = loadImage.width / ratioSize;
+      let heightImage = heightStage;
+      let paddingImage = STAGE_HEIGHT_SUBTRACT / 2;
 
-      handleIsMaxWidthImage(widthImage, widthStage);
-      window.addEventListener("resize", () => {
-        const widthStage = stageRef?.current?.clientWidth;
-        handleIsMaxWidthImage(widthImage, widthStage);
-      });
-
-      setLoadImage(loadImage);
-      setSizeImage({ width: widthImage, height: heightStage });
-    }
-
-    function handleIsMaxWidthImage(widthImage: number, widthStage: number) {
       if (widthImage > widthStage) {
-        setIsMaxWidthImage(true);
-      } else {
-        setIsMaxWidthImage(false);
+        ratioSize = loadImage.width / widthStage;
+        widthImage = widthStage;
+        heightImage = loadImage.height / ratioSize;
+        paddingImage = 0;
       }
+
+      setSizeImage({
+        width: widthImage,
+        height: heightImage,
+        padding: paddingImage,
+      });
     }
   }, [image, isFullscreen, isOpenThumbs]);
 
   const contentStyles = {
-    width: isMaxWidthImage ? "90%" : sizeImage.width,
-    height: isMaxWidthImage ? "auto" : sizeImage.height,
-    paddingBottom: stageHeightSubtract / 2,
+    width: sizeImage.width,
+    height: sizeImage.height,
+    paddingBottom: sizeImage.padding,
   };
 
   return (
