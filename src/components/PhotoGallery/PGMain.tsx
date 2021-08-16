@@ -56,7 +56,7 @@ export default function PGMain(props: Props) {
 
   const [sizeThumbsImage, setSizeThumbsImage] = useState(0);
 
-  const { show } = useContext<ParametersProps>(ParametersContext);
+  const { show, setShow } = useContext<ParametersProps>(ParametersContext);
 
   useEffect(() => {
     handleSizeThumbsImage();
@@ -97,6 +97,7 @@ export default function PGMain(props: Props) {
           onToggleSlideshow={onToggleSlideshow}
           onDownloadImage={onDownloadImage}
           onToggleThumbs={onToggleThumbs}
+          onToggleShowPG={() => setShow(!show)}
         />
         <PGNavigation
           onPreviousImage={onPreviousImage}

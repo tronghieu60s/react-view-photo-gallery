@@ -18,6 +18,7 @@ type Props = {
   onToggleSlideshow: () => void;
   onDownloadImage: () => void;
   onToggleThumbs: () => void;
+  onToggleShowPG: () => void;
 };
 
 export default function PGToolbar(props: Props) {
@@ -28,6 +29,7 @@ export default function PGToolbar(props: Props) {
     onToggleSlideshow,
     onDownloadImage,
     onToggleThumbs,
+    onToggleShowPG,
   } = props;
 
   return (
@@ -62,7 +64,7 @@ export default function PGToolbar(props: Props) {
       <button onClick={onToggleThumbs} className="gl-button" title="Thumbnails">
         <IconsGridAlt />
       </button>
-      <button className="gl-button" title="Close">
+      <button onClick={onToggleShowPG} className="gl-button" title="Close">
         <IconsXCircle />
       </button>
     </div>

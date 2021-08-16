@@ -60,6 +60,7 @@ $thumb-size-mobile: 75px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   outline: none;
   z-index: 100000;
+  transition: 0.4s;
 
   &-hidden {
     @include hidden;
@@ -75,6 +76,8 @@ $thumb-size-mobile: 75px;
 .gl-inner {
   @include absolute(0, 0, 0, 0);
   backdrop-filter: blur(5px);
+  overflow: hidden;
+
   z-index: 110000;
 }
 
@@ -204,6 +207,7 @@ $thumb-size-mobile: 75px;
   scroll-behavior: smooth;
   overflow-x: auto;
   z-index: 110000;
+  transition: 0.4s;
 
   &__list {
     @include square(100%);

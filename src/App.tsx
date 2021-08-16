@@ -41,7 +41,11 @@ export default function App(): JSX.Element {
     <Fragment>
       <h1>Hello World!</h1>
       <button onClick={() => setShowGallery(true)}>Show</button>
-      <PhotoGallery show={showGallery} images={arrImages} />
+      <PhotoGallery
+        show={showGallery}
+        setShow={setShowGallery}
+        images={arrImages}
+      />
     </Fragment>
   );
 }
