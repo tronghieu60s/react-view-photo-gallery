@@ -1,10 +1,10 @@
 type Props = {
-  currentImageIndex: number;
   numberOfImages: number;
+  currentImageIndex: number;
 };
 
 export default function PGInfo(props: Props) {
-  const { currentImageIndex, numberOfImages } = props;
+  const { numberOfImages, currentImageIndex } = props;
   return (
     <div className="gl-info">
       <span>{currentImageIndex + 1}</span>&nbsp;/&nbsp;

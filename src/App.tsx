@@ -5,13 +5,13 @@ import { ImageType } from "./types";
 const arrImages: ImageType[] = [
   {
     src: "https://images-na.ssl-images-amazon.com/images/I/71PmIZIFMlL.png",
-    name: "anhyeuem.jpg",
-    caption: "Đỗ gia huy · 14/7/21 at 12:36",
+    name: "",
+    caption: "",
   },
   {
     src: "https://i.pinimg.com/originals/0b/3a/07/0b3a07cbf4f5140c7b499eaf966624e5.jpg",
-    name: "RDT_20210707_214931735550536695879417-YPUMUTdH.jpg",
-    caption: "Đỗ gia huy · 14/7/21 at 12:36",
+    name: "",
+    caption: "",
   },
 ];
 
