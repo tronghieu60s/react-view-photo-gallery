@@ -100,6 +100,7 @@ export default function PGMain(props: Props) {
           onToggleShowPG={() => setShow(!show)}
         />
         <PGNavigation
+          numberOfImages={numberOfImages}
           onPreviousImage={onPreviousImage}
           onNextImage={onNextImage}
         />

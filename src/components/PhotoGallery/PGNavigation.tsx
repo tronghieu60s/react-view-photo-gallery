@@ -1,12 +1,13 @@
 type Props = {
+  numberOfImages: number;
   onPreviousImage: () => void;
   onNextImage: () => void;
 };
 
 export default function PGNavigation(props: Props) {
-  const { onPreviousImage, onNextImage } = props;
+  const { numberOfImages, onPreviousImage, onNextImage } = props;
   return (
-    <div className="gl-navigation">
+    <div className={`gl-navigation${numberOfImages > 1 ? "" : " gl-d-none"}`}>
       <button
         onClick={onPreviousImage}
         className="gl-button gl-navigation__left"

@@ -51,6 +51,13 @@ $thumb-size-mobile: 75px;
 }
 
 // -----------------------------
+// Style Global Gallery --------
+// -----------------------------
+.gl-d-none {
+  display: none;
+}
+
+// -----------------------------
 // Style Photo Gallery ---------
 // -----------------------------
 .gl-container {
@@ -223,8 +230,8 @@ $thumb-size-mobile: 75px;
 
   &__item {
     @include square($thumb-size);
-    max-height: calc(100% - 8px);
-    max-width: calc(50% - 4px);
+    // max-height: calc(100% - 8px);
+    // max-width: calc(50% - 4px);
     position: relative;
     backface-visibility: hidden;
     background-color: rgba(0, 0, 0, 0.1);
