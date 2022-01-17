@@ -29,18 +29,22 @@ export default function PhotoGallery(props: ParametersProps) {
     setCurrentProgress(0);
   }, [isSlideshow, currentImageIndex]);
 
-  function onToggleFullScreen() {
-    if (!document.fullscreenElement || !isFullscreen) {
-      document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
+  const onPreviousImage = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1);
     } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-        setIsFullscreen(false);
-      }
+      setCurrentImageIndex(images.length - 1);
     }
-  }
+  };
 
+  const onNextImage = () => {
+    if (currentImageIndex < images.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    } else {
+      setCurrentImageIndex(0);
+    }
+  };
+  
   const onDownloadImage = () => {
     const { src } = images[currentImageIndex];
     const fileExtension = getFileExtension(src || "");
@@ -58,44 +62,43 @@ export default function PhotoGallery(props: ParametersProps) {
       .catch((_) => alert("Cannot Download File!"));
   };
 
-  const onPreviousImage = () => {
-    if (currentImageIndex > 0) {
-      setCurrentImageIndex(currentImageIndex - 1);
-    } else {
-      setCurrentImageIndex(images.length - 1);
-    }
-  };
+  const onOpenExternalLink = () => {
+    window.open(images[currentImageIndex].src, "_blank");
+  }
 
-  const onNextImage = () => {
-    if (currentImageIndex < images.length - 1) {
-      setCurrentImageIndex(currentImageIndex + 1);
+  const onToggleFullScreen = () => {
+    if (!document.fullscreenElement || !isFullscreen) {
+      document.documentElement.requestFullscreen();
+      setIsFullscreen(true);
     } else {
-      setCurrentImageIndex(0);
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        setIsFullscreen(false);
+      }
     }
   };
 
   return (
     <ParametersProvider {...props}>
       <PGMain
-        isFullscreen={isFullscreen}
-        isSlideshow={isSlideshow}
-        isOpenThumbs={isOpenThumbs}
         images={images}
         numberOfImages={images.length}
         currentImage={images[currentImageIndex]}
         currentImageIndex={currentImageIndex}
         currentProgress={currentProgress}
         /* Actions */
-        onOpenExternalLink={() =>
-          window.open(images[currentImageIndex].src, "_blank")
-        }
-        onToggleFullScreen={onToggleFullScreen}
-        onToggleSlideshow={() => setIsSlideshow(!isSlideshow)}
-        onDownloadImage={onDownloadImage}
-        onToggleThumbs={() => setIsOpenThumbs(!isOpenThumbs)}
-        onSetCurrentImageIndex={(index) => setCurrentImageIndex(index)}
         onPreviousImage={onPreviousImage}
         onNextImage={onNextImage}
+        onSetCurrentImageIndex={(index) => setCurrentImageIndex(index)}
+        /* Action Button */
+        onDownloadImage={onDownloadImage}
+        onOpenExternalLink={onOpenExternalLink}
+        isFullscreen={isFullscreen}
+        onToggleFullScreen={onToggleFullScreen}
+        isSlideshow={isSlideshow}
+        onToggleSlideshow={() => setIsSlideshow(!isSlideshow)}
+        isOpenThumbs={isOpenThumbs}
+        onToggleThumbs={() => setIsOpenThumbs(!isOpenThumbs)}
       />
     </ParametersProvider>
   );
