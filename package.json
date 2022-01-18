@@ -5,8 +5,11 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "scripts": {
-    "serve": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "serve": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "yarn build",
+    "preinstall": "npx only-allow yarn"
   },
   "keywords": [],
   "author": "",
