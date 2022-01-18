@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import {
   ParametersProps,
-  ParametersProvider,
-} from "../contexts/ParametersContext";
-import { getFileExtension } from "../helpers/commonFunctions";
-import "./PhotoGallery.scss";
-import PGMain from "./PhotoGallery/PGMain";
+  ParametersProvider
+} from "../../contexts/ParametersContext";
+import { getFileExtension } from "../../helpers/commonFunctions";
+import "./index.scss";
+import PGMain from "./PGMain";
 
 const SLIDE_SHOW_MILLISECONDS = 3000;
 
@@ -44,7 +44,7 @@ export default function PhotoGallery(props: ParametersProps) {
       setCurrentImageIndex(0);
     }
   };
-  
+
   const onDownloadImage = () => {
     const { src } = images[currentImageIndex];
     const fileExtension = getFileExtension(src || "");
@@ -64,7 +64,7 @@ export default function PhotoGallery(props: ParametersProps) {
 
   const onOpenExternalLink = () => {
     window.open(images[currentImageIndex].src, "_blank");
-  }
+  };
 
   const onToggleFullScreen = () => {
     if (!document.fullscreenElement || !isFullscreen) {

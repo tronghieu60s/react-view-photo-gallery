@@ -2,13 +2,18 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "index.js"),
+  mode: "production",
+  entry: "./index.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    globalObject: "this",
+    library: "reactViewPhotoGallery",
+    libraryTarget: "umd",
     filename: "index.bundle.js",
+    path: path.resolve(__dirname, "dist"),
     clean: true,
   },
   devtool: "inline-source-map",
+  optimization: { minimize: true },
   module: {
     rules: [
       {

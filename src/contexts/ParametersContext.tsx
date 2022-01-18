@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageType } from "../types";
+import { ImageType } from "../common/types";
 
 export type ParametersProps = {
   show: boolean;

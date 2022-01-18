@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ImageType } from "../../types";
+import { ImageType } from "../../common/types";
 
 type Props = {
   image: ImageType;

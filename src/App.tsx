@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import PhotoGallery from "./components/PhotoGallery";
-import { ImageType } from "./types";
+import { ImageType } from "./common/types";
 
 const arrImages: ImageType[] = [
   {
@@ -19,7 +19,6 @@ export default function App(): JSX.Element {
   const [showGallery, setShowGallery] = useState(false);
   return (
     <Fragment>
-      <h1>Hello World!</h1>
       <button onClick={() => setShowGallery(true)}>Show</button>
       <PhotoGallery
         show={showGallery}

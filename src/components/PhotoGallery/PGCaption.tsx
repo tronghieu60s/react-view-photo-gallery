@@ -1,4 +1,4 @@
-import { ImageType } from "../../types";
+import { ImageType } from "../../common/types";
 
 type Props = {
   currentImage: ImageType;

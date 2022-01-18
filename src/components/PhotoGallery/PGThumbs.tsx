@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ImageType } from "../../types";
+import { ImageType } from "../../common/types";
 
 type Props = {
   images: Array<ImageType>;

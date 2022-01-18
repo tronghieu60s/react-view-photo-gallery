@@ -2,7 +2,8 @@
   "name": "react-view-photo-gallery",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.tsx",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
     "serve": "webpack serve --mode development",
     "build": "webpack --mode production"
