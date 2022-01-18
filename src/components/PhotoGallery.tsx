@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import {
   ParametersProps,
   ParametersProvider
-} from "../../contexts/ParametersContext";
-import { getFileExtension } from "../../helpers/commonFunctions";
-import "./index.scss";
-import PGMain from "./PGMain";
+} from "../contexts/ParametersContext";
+import { getFileExtension } from "../helpers/commonFunctions";
+import "./PhotoGallery.scss";
+import PGMain from "./PhotoGallery/PGMain";
 
 const SLIDE_SHOW_MILLISECONDS = 3000;
 
