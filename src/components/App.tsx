@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
-import PhotoGallery from "./components/PhotoGallery";
-import { ImageType } from "./common/types";
+import { ImageType } from "../common/types";
+import PhotoGallery from "./PhotoGallery";
 
 const arrImages: ImageType[] = [
   {
