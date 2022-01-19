@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import ParametersContext, {
-  ParametersProps,
-} from "../../contexts/ParametersContext";
-import { ImageType } from "../../common/types";
+import { ImageType, ParametersProps } from "../../common/types";
+import ParametersContext from "../../contexts/ParametersContext";
 import PGCaption from "./PGCaption";
 import PGInfo from "./PGInfo";
 import PGNavigation from "./PGNavigation";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { ParametersProps } from "../common/types";
 import {
-  ParametersProps,
   ParametersProvider
 } from "../contexts/ParametersContext";
 import { getFileExtension } from "../helpers/commonFunctions";

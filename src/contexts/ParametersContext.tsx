@@ -1,12 +1,5 @@
 import React from "react";
-import { ImageType } from "../common/types";
-
-export type ParametersProps = {
-  show: boolean;
-  setShow: (show: boolean) => void;
-  images: Array<ImageType>;
-  children?: JSX.Element;
-};
+import { ParametersProps } from "../common/types";
 
 const defaultParams: ParametersProps = {
   show: false,
