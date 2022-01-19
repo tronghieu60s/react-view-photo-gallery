@@ -7,9 +7,9 @@
   "scripts": {
     "serve": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "build:view": "webpack --config webpack.dev.js",
-    "deploy": "gh-pages -d dist",
-    "predeploy": "yarn build:view",
+    "build:demo": "webpack --config webpack.dev.js",
+    "deploy": "gh-pages -d demo",
+    "predeploy": "yarn build:demo",
     "preinstall": "npx only-allow yarn"
   },
   "keywords": [],
