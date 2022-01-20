@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "module": "build/index.js",
   "scripts": {
+    "test": "jest",
     "serve": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:demo": "webpack --config webpack.dev.js",
