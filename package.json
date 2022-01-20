@@ -1,9 +1,9 @@
 {
   "name": "react-view-photo-gallery",
   "version": "1.0.0",
-  "description": "",
-  "main": "build/index.js",
-  "module": "build/index.js",
+  "description": "A react library helpful render photos in awesome gallery.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
     "test": "jest",
     "pretest": "yarn build",
@@ -11,11 +11,34 @@
     "build": "webpack --config webpack.prod.js",
     "build:demo": "webpack --config webpack.dev.js",
     "deploy": "gh-pages -d demo",
-    "predeploy": "yarn build:demo"
+    "predeploy": "yarn build:demo",
+    "publish": "yarn build && yarn publish"
   },
-  "keywords": [],
-  "author": "",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tronghieu60s/react-view-photo-gallery.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "image-gallery",
+    "photo-gallery",
+    "react-photo-gallery",
+    "react-view-photo-gallery",
+    "react-view-photo-gallery-library",
+    "react-image-gallery",
+    "react-view-image-gallery",
+    "react-view-image-gallery-library"
+  ],
+  "author": "Trong Hieu <tronghieu60s@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tronghieu60s/react-view-photo-gallery/issues"
+  },
+  "homepage": "https://github.com/tronghieu60s/react-view-photo-gallery#readme",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
