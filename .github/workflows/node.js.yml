@@ -45,9 +45,6 @@ jobs:
       - name: Upload Coverage
         uses: codecov/codecov-action@v1
 
-      - name: Build Project
-        run: yarn build:demo --if-present
-
       - name: Deploy
         run: |
           git config --global user.name $user_name

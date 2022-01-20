@@ -10,7 +10,7 @@
     "build": "webpack --config webpack.prod.js",
     "build:demo": "webpack --config webpack.dev.js",
     "deploy": "gh-pages -d demo",
-    "predeploy": "yarn build:demo"
+    "predeploy": "yarn build && yarn build:demo"
   },
   "keywords": [],
   "author": "",
