@@ -37,10 +37,10 @@ jobs:
 
       - name: Install Dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Run The Test
-        run: yarn test -- --coverage
+        run: yarn test --coverage
 
       - name: Upload Coverage
         uses: codecov/codecov-action@v1
