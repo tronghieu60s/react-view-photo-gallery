@@ -4,7 +4,7 @@ const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
   mode: "production",
-  entry: "./src/components/PhotoGallery.tsx",
+  entry: "./index.ts",
   output: {
     globalObject: "this",
     library: "PhotoGallery",

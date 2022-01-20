@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PhotoGallery /> Renders the components <PhotoGallery /> 1`] = `ShallowWrapper {}`;

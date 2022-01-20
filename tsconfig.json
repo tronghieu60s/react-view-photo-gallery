@@ -20,12 +20,18 @@
         "skipLibCheck": true,
         "strict": true,
         "target": "es5",
+        "typeRoots": [
+            "node_modules/@types",
+            "index.d.ts"
+        ],
     },
     "include": [
-        "src/**/*",
+        "src/**/*", "index.d.ts", "index.ts",
     ],
     "exclude": [
-        "node_modules",
-        "**/*.spec.ts"
+        "dist",
+        "**/*.d.ts",
+        "**/*.spec.ts",
+        "node_modules"
     ]
 }
