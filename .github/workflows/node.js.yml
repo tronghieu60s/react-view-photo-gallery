@@ -36,7 +36,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install Dependencies
-        run: npm install --ignore-scripts
+        run: npm install
 
       - name: Run The Test
         run: npm test -- --coverage
