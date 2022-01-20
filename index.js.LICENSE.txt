@@ -1,0 +1,229 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./PhotoGallery.scss */
+
+/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */
+
+/*! ../../contexts/ParametersContext */
+
+/*! ../../node_modules/css-loader/dist/runtime/api.js */
+
+/*! ../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */
+
+/*! ../contexts/ParametersContext */
+
+/*! ../helpers/commonFunctions */
+
+/*! ../src/components/App */
+
+/*! ./PGCaption */
+
+/*! ./PGIcons */
+
+/*! ./PGInfo */
+
+/*! ./PGNavigation */
+
+/*! ./PGProgress */
+
+/*! ./PGStage */
+
+/*! ./PGThumbs */
+
+/*! ./PGToolbar */
+
+/*! ./PhotoGallery */
+
+/*! ./PhotoGallery.scss */
+
+/*! ./PhotoGallery/PGMain */
+
+/*! ./cjs/react-dom.development.js */
+
+/*! ./cjs/react-jsx-runtime.development.js */
+
+/*! ./cjs/react.development.js */
+
+/*! ./cjs/scheduler-tracing.development.js */
+
+/*! ./cjs/scheduler.development.js */
+
+/*! object-assign */
+
+/*! react */
+
+/*! react-dom */
+
+/*! react/jsx-runtime */
+
+/*! scheduler */
+
+/*! scheduler/tracing */
+
+/*!************************!*\
+  !*** ./example/app.js ***!
+  \************************/
+
+/*!********************************!*\
+  !*** ./src/components/App.tsx ***!
+  \********************************/
+
+/*!*************************************!*\
+  !*** ./node_modules/react/index.js ***!
+  \*************************************/
+
+/*!****************************************!*\
+  !*** ./src/helpers/commonFunctions.ts ***!
+  \****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/react-dom/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/scheduler/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/components/PhotoGallery.tsx ***!
+  \*****************************************/
+
+/*!******************************************!*\
+  !*** ./src/components/PhotoGallery.scss ***!
+  \******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/react/jsx-runtime.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/scheduler/tracing.js ***!
+  \*******************************************/
+
+/*!********************************************!*\
+  !*** ./src/contexts/ParametersContext.tsx ***!
+  \********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/object-assign/index.js ***!
+  \*********************************************/
+
+/*!************************************************!*\
+  !*** ./src/components/PhotoGallery/PGInfo.tsx ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/components/PhotoGallery/PGMain.tsx ***!
+  \************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/components/PhotoGallery/PGIcons.tsx ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/components/PhotoGallery/PGStage.tsx ***!
+  \*************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/components/PhotoGallery/PGThumbs.tsx ***!
+  \**************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/components/PhotoGallery/PGCaption.tsx ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/components/PhotoGallery/PGToolbar.tsx ***!
+  \***************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/components/PhotoGallery/PGProgress.tsx ***!
+  \****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/react/cjs/react.development.js ***!
+  \*****************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/components/PhotoGallery/PGNavigation.tsx ***!
+  \******************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/scheduler/cjs/scheduler.development.js ***!
+  \*************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleDomAPI.js ***!
+  \***************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
+  \*****************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertBySelector.js ***!
+  \********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/scheduler/cjs/scheduler-tracing.development.js ***!
+  \*********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleTagTransform.js ***!
+  \*********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertStyleElement.js ***!
+  \**********************************************************************/
+
+/*!************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/cssWithMappingToString.js ***!
+  \************************************************************************/
+
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js ***!
+  \**********************************************************************************/
+
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/PhotoGallery.scss ***!
+  \***********************************************************************************************************************/
+
+/**
+ * Checks if an event is supported in the current execution environment.
+ *
+ * NOTE: This will not work correctly for non-generic events such as `change`,
+ * `reset`, `load`, `error`, and `select`.
+ *
+ * Borrows from Modernizr.
+ *
+ * @param {string} eventNameSuffix Event name, e.g. "click".
+ * @return {boolean} True if the event is supported.
+ * @internal
+ * @license Modernizr 3.0.0pre (Custom Build) | MIT
+ */
