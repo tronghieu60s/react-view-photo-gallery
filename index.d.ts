@@ -14,8 +14,17 @@ export type ImageType = {
 };
 
 export type PhotoGalleryProps = {
+  /**
+   * the show attribute to display photo gallery
+   */
   show: boolean;
+  /**
+   * the action show attribute to display photo gallery
+   */
   onShow: (show: boolean) => void;
+  /**
+   * the images to display in photo gallery
+  */
   images: Array<ImageType>;
 };
 
