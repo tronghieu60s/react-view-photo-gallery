@@ -12,9 +12,5 @@ module.exports = merge(common, {
     clean: true,
   },
   devtool: "inline-source-map",
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "example", "index.html"),
-    }),
-  ],
+  plugins: [new HtmlWebpackPlugin({ template: "./example/index.html" })],
 });

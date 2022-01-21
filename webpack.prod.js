@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
-  entry: ["./index.ts"],
+  entry: "./index.ts",
   output: {
     globalObject: "this",
     library: "PhotoGallery",
