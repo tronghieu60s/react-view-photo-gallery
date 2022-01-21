@@ -22,7 +22,7 @@ object-assign
 
 /*! ../../node_modules/css-loader/dist/runtime/api.js */
 
-/*! ../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */
+/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */
 
 /*! ../contexts/ParametersContext */
 
@@ -166,6 +166,10 @@ object-assign
   !*** ./src/components/PhotoGallery/PGNavigation.tsx ***!
   \******************************************************/
 
+/*!************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/sourceMaps.js ***!
+  \************************************************************/
+
 /*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
   \*************************************************************/
@@ -197,10 +201,6 @@ object-assign
 /*!**********************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/insertStyleElement.js ***!
   \**********************************************************************/
-
-/*!************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/runtime/cssWithMappingToString.js ***!
-  \************************************************************************/
 
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
