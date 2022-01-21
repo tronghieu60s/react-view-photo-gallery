@@ -5,13 +5,6 @@ $thumb-size-mobile: 75px;
 // Style Common Mixin ----------
 // -----------------------------
 
-@mixin user-select-none {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 @mixin visible {
   visibility: visible;
   opacity: 1;
@@ -48,6 +41,13 @@ $thumb-size-mobile: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin user-select-none {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 // -----------------------------
