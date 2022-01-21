@@ -7,12 +7,13 @@ type Props = {
 export default function PGCaption(props: Props) {
   const { currentImage } = props;
   const { src, name, caption } = currentImage;
-  const nameFile = name || src.split("/").pop();
+  const nameGl = name || src.split("/").pop();
+  const captionGl = caption || new Date().toUTCString();
   return (
     <div className="gl-caption">
       <div className="gl-caption__body">
-        <h4>{nameFile}</h4>
-        <p>{caption || new Date().toUTCString()}</p>
+        <h4>{nameGl}</h4>
+        <span>{captionGl}</span>
       </div>
     </div>
   );
