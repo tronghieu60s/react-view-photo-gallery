@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ParametersProps } from "../common/types";
+import { PhotoGalleryProps } from "../common/types";
 import {
   ParametersProvider
 } from "../contexts/ParametersContext";
@@ -9,7 +9,7 @@ import PGMain from "./PhotoGallery/PGMain";
 
 const SLIDE_SHOW_MILLISECONDS = 3000;
 
-export default function PhotoGallery(props: ParametersProps) {
+export default function PhotoGallery(props: PhotoGalleryProps) {
   const { images } = props;
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isSlideshow, setIsSlideshow] = useState(false);

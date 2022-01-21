@@ -1,11 +1,11 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 
-import PhotoGallery, { ImageType } from "../dist/index";
+import PhotoGallery, { PhotoGalleryProps } from "../dist/index";
 
-const defaultProps: ImageType = {
+const defaultProps: PhotoGalleryProps = {
   show: true,
-  setShow: () => {},
+  onShow: () => {},
   images: [
     { src: "https://via.placeholder.com/500x500" },
     { src: "https://via.placeholder.com/1000x1000" },
@@ -31,9 +31,11 @@ describe("<PhotoGallery />", () => {
     expect(component.find(".gl-toolbar").length).toBe(1);
   });
   test("Info item in the component <PhotoGallery />", () => {
-    const component = mount(<PhotoGallery {...defaultProps} />);
-    /* Test show info of items,
-     * Click next and previous button for change value */
+    const component = mount(<PhotoGallery  {...defaultProps} />);
+    /**
+     * test show info of items,
+     * click next and previous button for change value
+     */
     expect(component.find(".gl-info").length).toBe(1);
     expect(component.find(".gl-info").text()).toEqual(`1 / 3`);
     component.find(".gl-navigation__right").simulate("click");

@@ -4,9 +4,8 @@ export type ImageType = {
   caption?: string;
 };
 
-export type ParametersProps = {
+export type PhotoGalleryProps = {
   show: boolean;
-  setShow: (show: boolean) => void;
+  onShow: (show: boolean) => void;
   images: Array<ImageType>;
-  children?: JSX.Element;
 };

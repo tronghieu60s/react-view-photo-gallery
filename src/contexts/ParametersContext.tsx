@@ -1,23 +1,28 @@
 import React from "react";
-import { ParametersProps } from "../common/types";
+import { PhotoGalleryProps } from "../common/types";
 
-const defaultParams: ParametersProps = {
+type PhotoGalleryContextProps = PhotoGalleryProps & {
+  children?: JSX.Element;
+};
+
+const defaultParams: PhotoGalleryContextProps = {
   show: false,
-  setShow: () => {},
+  onShow: () => {},
   images: [],
 };
 
-const ParametersContext = React.createContext<ParametersProps>(defaultParams);
+const ParametersContext =
+  React.createContext<PhotoGalleryContextProps>(defaultParams);
 
-export const ParametersProvider = (props: ParametersProps) => {
-  const { children, show, setShow, images } = props;
+export const ParametersProvider = (props: PhotoGalleryContextProps) => {
+  const { children, show, onShow, images } = props;
 
   if (!images || images.length === 0) {
     throw new Error("ParametersProvider: images should be provided");
   }
 
   return (
-    <ParametersContext.Provider value={{ show, setShow, images }}>
+    <ParametersContext.Provider value={{ show, onShow, images }}>
       {children}
     </ParametersContext.Provider>
   );

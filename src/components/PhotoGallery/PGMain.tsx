@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { ImageType, ParametersProps } from "../../common/types";
+import { ImageType, PhotoGalleryProps } from "../../common/types";
 import ParametersContext from "../../contexts/ParametersContext";
 import PGCaption from "./PGCaption";
 import PGInfo from "./PGInfo";
@@ -54,7 +54,7 @@ export default function PGMain(props: Props) {
 
   const [sizeThumbsImage, setSizeThumbsImage] = useState(0);
 
-  const { show, setShow } = useContext<ParametersProps>(ParametersContext);
+  const { show, onShow } = useContext<PhotoGalleryProps>(ParametersContext);
 
   useEffect(() => {
     handleSizeThumbsImage();
@@ -95,7 +95,7 @@ export default function PGMain(props: Props) {
           onToggleSlideshow={onToggleSlideshow}
           onDownloadImage={onDownloadImage}
           onToggleThumbs={onToggleThumbs}
-          onToggleShowPG={() => setShow(!show)}
+          onToggleShowPG={() => onShow(!show)}
         />
         <PGNavigation
           numberOfImages={numberOfImages}
