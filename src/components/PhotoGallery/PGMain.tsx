@@ -14,8 +14,6 @@ type Props = {
   isSlideshow: boolean;
   isOpenThumbs: boolean;
   images: Array<ImageType>;
-  numberOfImages: number;
-  currentImage: ImageType;
   currentImageIndex: number;
   currentProgress: number;
   onOpenExternalLink: () => void;
@@ -23,7 +21,7 @@ type Props = {
   onToggleSlideshow: () => void;
   onDownloadImage: () => void;
   onToggleThumbs: () => void;
-  onSetCurrentImageIndex: (index: number) => void;
+  onPressThumbsItem: (index: number) => void;
   onPreviousImage: () => void;
   onNextImage: () => void;
 };
@@ -38,8 +36,6 @@ export default function PGMain(props: Props) {
     isSlideshow,
     isOpenThumbs,
     images,
-    numberOfImages,
-    currentImage,
     currentImageIndex,
     currentProgress,
     onOpenExternalLink,
@@ -47,12 +43,12 @@ export default function PGMain(props: Props) {
     onToggleSlideshow,
     onDownloadImage,
     onToggleThumbs,
-    onSetCurrentImageIndex,
+    onPressThumbsItem,
     onPreviousImage,
     onNextImage,
   } = props;
 
-  const [sizeThumbsImage, setSizeThumbsImage] = useState(0);
+  const [sizeThumbs, setSizeThumbs] = useState(0);
 
   const { show, onShow } = useContext<PhotoGalleryProps>(ParametersContext);
 
@@ -63,30 +59,23 @@ export default function PGMain(props: Props) {
     function handleSizeThumbsImage() {
       const widthWindow = window.screen.width;
       if (widthWindow < 425) {
-        setSizeThumbsImage(MOBILE_SIZE_IMAGE);
+        setSizeThumbs(MOBILE_SIZE_IMAGE);
       } else if (widthWindow < 768) {
-        setSizeThumbsImage(TABLET_SIZE_IMAGE);
+        setSizeThumbs(TABLET_SIZE_IMAGE);
       } else {
-        setSizeThumbsImage(DESKTOP_SIZE_IMAGE);
+        setSizeThumbs(DESKTOP_SIZE_IMAGE);
       }
     }
   }, []);
 
   return (
-    <div
-      className={`gl-container${!show ? " gl-container-hidden" : ""}${
-        isOpenThumbs ? " gl-show-thumbs" : ""
-      }`}
-    >
+    <div className={`gl-container${show ? " active" : ""}`}>
       <div className="gl-bg"></div>
       <div
         className="gl-inner"
-        style={{ bottom: isOpenThumbs ? sizeThumbsImage : 0 }}
+        style={{ bottom: isOpenThumbs ? sizeThumbs : 0 }}
       >
-        <PGInfo
-          numberOfImages={numberOfImages}
-          currentImageIndex={currentImageIndex}
-        />
+        <PGInfo images={images} currentImageIndex={currentImageIndex} />
         <PGToolbar
           isFullscreen={isFullscreen}
           isSlideshow={isSlideshow}
@@ -98,25 +87,25 @@ export default function PGMain(props: Props) {
           onToggleShowPG={() => onShow(!show)}
         />
         <PGNavigation
-          numberOfImages={numberOfImages}
+          images={images}
           onPreviousImage={onPreviousImage}
           onNextImage={onNextImage}
         />
         <PGStage
           images={images}
-          numberOfImages={numberOfImages}
           currentImageIndex={currentImageIndex}
           isFullscreen={isFullscreen}
           isOpenThumbs={isOpenThumbs}
         />
-        <PGCaption currentImage={currentImage} />
+        <PGCaption images={images} currentImageIndex={currentImageIndex} />
         <PGProgress currentProgress={currentProgress} />
       </div>
       <PGThumbs
         images={images}
         currentImageIndex={currentImageIndex}
-        sizeThumbsImage={sizeThumbsImage}
-        onSetCurrentImageIndex={onSetCurrentImageIndex}
+        sizeThumbs={sizeThumbs}
+        isOpenThumbs={isOpenThumbs}
+        onPressThumbsItem={onPressThumbsItem}
       />
     </div>
   );

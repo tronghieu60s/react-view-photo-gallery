@@ -4,15 +4,21 @@ import { ImageType } from "../../common/types";
 type Props = {
   images: Array<ImageType>;
   currentImageIndex: number;
-  sizeThumbsImage: number;
-  onSetCurrentImageIndex: (index: number) => void;
+  sizeThumbs: number;
+  isOpenThumbs: boolean;
+  onPressThumbsItem: (index: number) => void;
 };
 
 export default function PGThumbs(props: Props) {
   const thumbsRef = useRef<any>(null);
   const thumbsItemRef = useRef<any>(null);
-  const { images, currentImageIndex, sizeThumbsImage, onSetCurrentImageIndex } =
-    props;
+  const {
+    images,
+    currentImageIndex,
+    sizeThumbs,
+    isOpenThumbs,
+    onPressThumbsItem,
+  } = props;
 
   useEffect(() => {
     const thumbsItemLeft = thumbsItemRef?.current?.offsetLeft;
@@ -27,22 +33,25 @@ export default function PGThumbs(props: Props) {
           key={index}
           ref={active ? thumbsItemRef : null}
           style={{
-            width: sizeThumbsImage,
-            height: sizeThumbsImage,
+            width: sizeThumbs,
+            height: sizeThumbs,
             backgroundImage: `url(${image.src})`,
           }}
-          className={`gl-thumbs__item${active ? " active" : ""}`}
-          onClick={() => onSetCurrentImageIndex(index)}
+          className={`gl-thumbs__list__item${active ? " active" : ""}`}
+          onClick={() => onPressThumbsItem(index)}
         ></div>
       );
     });
   };
 
   return (
-    <div className="gl-thumbs" ref={thumbsRef}>
+    <div
+      className={`gl-thumbs${isOpenThumbs ? " active" : ""}`}
+      ref={thumbsRef}
+    >
       <div
         className="gl-thumbs__list"
-        style={{ width: images.length * (sizeThumbsImage + 9) }}
+        style={{ width: images.length * (sizeThumbs + 9) }}
       >
         {renderItems()}
       </div>

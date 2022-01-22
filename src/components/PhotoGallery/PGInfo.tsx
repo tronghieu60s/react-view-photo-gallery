@@ -1,13 +1,15 @@
+import { ImageType } from "../../common/types";
+
 type Props = {
-  numberOfImages: number;
+  images: Array<ImageType>;
   currentImageIndex: number;
 };
 
 export default function PGInfo(props: Props) {
-  const { numberOfImages, currentImageIndex } = props;
+  const { images, currentImageIndex } = props;
   return (
     <div className="gl-info">
-      <span>{currentImageIndex + 1}</span> / <span>{numberOfImages}</span>
+      <span>{currentImageIndex + 1}</span> / <span>{images.length}</span>
     </div>
   );
 }

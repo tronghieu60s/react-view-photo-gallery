@@ -3,7 +3,6 @@ import { ImageType } from "../../common/types";
 
 type Props = {
   images: Array<ImageType>;
-  numberOfImages: number;
   currentImageIndex: number;
   isFullscreen: boolean;
   isOpenThumbs: boolean;
@@ -11,7 +10,7 @@ type Props = {
 
 type PropsItem = {
   image: ImageType;
-  numberOfImages: number;
+  numberImages: number;
   isFullscreen: boolean;
   isOpenThumbs: boolean;
   stageRef: React.MutableRefObject<any>;
@@ -21,7 +20,7 @@ const STAGE_WIDTH_SUBTRACT = 40;
 const STAGE_HEIGHT_SUBTRACT = 120;
 
 export function PGStageItem(props: PropsItem) {
-  const { image, numberOfImages, isFullscreen, isOpenThumbs, stageRef } = props;
+  const { image, numberImages, isFullscreen, isOpenThumbs, stageRef } = props;
   const [loadImage, setLoadImage] = useState<HTMLImageElement>();
   const [sizeImage, setSizeImage] = useState({ width: 0, height: 0 });
 
@@ -36,7 +35,7 @@ export function PGStageItem(props: PropsItem) {
 
     function loadSizeImage() {
       const widthStage =
-        stageRef?.current?.clientWidth / numberOfImages - STAGE_WIDTH_SUBTRACT;
+        stageRef?.current?.clientWidth / numberImages - STAGE_WIDTH_SUBTRACT;
       const heightStage =
         stageRef?.current?.clientHeight - STAGE_HEIGHT_SUBTRACT;
       let ratioSize = loadImage.height / heightStage;
@@ -66,7 +65,7 @@ export function PGStageItem(props: PropsItem) {
 }
 
 export default function PGStage(props: Props) {
-  const { images, numberOfImages, currentImageIndex, ...otherProps } = props;
+  const { images, currentImageIndex, ...otherProps } = props;
   const stageRef = useRef<any>(null);
 
   return (
@@ -75,7 +74,7 @@ export default function PGStage(props: Props) {
       ref={stageRef}
       style={{
         left: `${-currentImageIndex * 100}%`,
-        width: `${numberOfImages * 100}%`,
+        width: `${images.length * 100}%`,
       }}
     >
       <div className="gl-stage__slide">
@@ -83,7 +82,7 @@ export default function PGStage(props: Props) {
           <PGStageItem
             key={index}
             image={image}
-            numberOfImages={numberOfImages}
+            numberImages={images.length}
             stageRef={stageRef}
             {...otherProps}
           />

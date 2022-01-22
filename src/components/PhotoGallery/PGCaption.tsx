@@ -1,20 +1,21 @@
+import { memo } from "react";
 import { ImageType } from "../../common/types";
 
 type Props = {
-  currentImage: ImageType;
+  images: Array<ImageType>;
+  currentImageIndex: number;
 };
 
-export default function PGCaption(props: Props) {
-  const { currentImage } = props;
-  const { src, name, caption } = currentImage;
-  const nameGl = name || src.split("/").pop();
-  const captionGl = caption || new Date().toUTCString();
+export default memo(function PGCaption(props: Props) {
+  const { images, currentImageIndex } = props;
+  const { src, name, caption } = images[currentImageIndex];
+
   return (
     <div className="gl-caption">
       <div className="gl-caption__body">
-        <h4>{nameGl}</h4>
-        <span>{captionGl}</span>
+        <h4>{name || src.split("/").pop()}</h4>
+        <span>{caption || new Date().toUTCString()}</span>
       </div>
     </div>
   );
-}
+});

@@ -61,6 +61,7 @@ $thumb-size-mobile: 75px;
 // Style Photo Gallery ---------
 // -----------------------------
 .gl-container {
+  @include hidden();
   @include user-select-none;
   @include fixed($top: 0, $left: 0);
   @include square(100%);
@@ -68,8 +69,8 @@ $thumb-size-mobile: 75px;
   outline: none;
   z-index: 100000;
   transition: 0.4s;
-  &-hidden {
-    @include hidden();
+  &.active {
+    @include visible();
   }
 }
 
@@ -200,10 +201,6 @@ $thumb-size-mobile: 75px;
   }
 }
 
-.gl-show-thumbs .gl-thumbs {
-  @include visible();
-}
-
 .gl-thumbs {
   @include hidden();
   @include absolute(auto, 0, 0, 0);
@@ -216,6 +213,9 @@ $thumb-size-mobile: 75px;
   overflow-x: auto;
   z-index: 110000;
   transition: 0.4s;
+  &.active {
+    @include visible();
+  }
   &__list {
     @include square(100%);
     font-size: 0;
@@ -226,30 +226,30 @@ $thumb-size-mobile: 75px;
     padding: 0;
     overflow-x: hidden;
     overflow-y: auto;
-  }
-  &__item {
-    @include square($thumb-size);
-    position: relative;
-    backface-visibility: hidden;
-    background-color: rgba(0, 0, 0, 0.1);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-    float: left;
-    outline: none;
-    overflow: hidden;
-    margin: 4px;
-    padding: 0;
-    border-radius: 5px;
-    &::before {
-      @include absolute(0, 0, 0, 0);
-      content: "";
-    }
-    &.active {
+    &__item {
+      @include square($thumb-size);
+      position: relative;
+      backface-visibility: hidden;
+      background-color: rgba(0, 0, 0, 0.1);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+      float: left;
+      outline: none;
+      overflow: hidden;
+      margin: 4px;
+      padding: 0;
+      border-radius: 5px;
       &::before {
-        border: 2px solid #eee;
-        background: radial-gradient(transparent, rgba(0, 0, 0, 0.75));
+        @include absolute(0, 0, 0, 0);
+        content: "";
+      }
+      &.active {
+        &::before {
+          border: 2px solid #eee;
+          background: radial-gradient(transparent, rgba(0, 0, 0, 0.75));
+        }
       }
     }
   }
