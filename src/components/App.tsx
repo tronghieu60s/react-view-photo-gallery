@@ -9,7 +9,7 @@ const arrImages: ImageType[] = [
 ];
 
 export default function App(): JSX.Element {
-  const [showGallery, setShowGallery] = useState(false);
+  const [showGallery, setShowGallery] = useState(true);
   return (
     <Fragment>
       <button onClick={() => setShowGallery(true)}>Show</button>

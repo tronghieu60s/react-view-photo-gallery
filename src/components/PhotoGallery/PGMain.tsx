@@ -84,8 +84,8 @@ export default function PGMain(props: Props) {
         style={{ bottom: isOpenThumbs ? sizeThumbsImage : 0 }}
       >
         <PGInfo
-          currentImageIndex={currentImageIndex}
           numberOfImages={numberOfImages}
+          currentImageIndex={currentImageIndex}
         />
         <PGToolbar
           isFullscreen={isFullscreen}
@@ -103,7 +103,9 @@ export default function PGMain(props: Props) {
           onNextImage={onNextImage}
         />
         <PGStage
-          image={images[currentImageIndex]}
+          images={images}
+          numberOfImages={numberOfImages}
+          currentImageIndex={currentImageIndex}
           isFullscreen={isFullscreen}
           isOpenThumbs={isOpenThumbs}
         />

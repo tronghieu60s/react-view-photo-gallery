@@ -2,17 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { ImageType } from "../../common/types";
 
 type Props = {
+  images: Array<ImageType>;
+  numberOfImages: number;
+  currentImageIndex: number;
+  isFullscreen: boolean;
+  isOpenThumbs: boolean;
+};
+
+type PropsItem = {
   image: ImageType;
   isFullscreen: boolean;
   isOpenThumbs: boolean;
+  stageRef: React.MutableRefObject<any>;
 };
 
 const STAGE_WIDTH_SUBTRACT = 40;
 const STAGE_HEIGHT_SUBTRACT = 120;
 
-export default function PGStage(props: Props) {
-  const { image, isFullscreen, isOpenThumbs } = props;
-  const stageRef = useRef<any>(null);
+export function PGStageItem(props: PropsItem) {
+  const { image, isFullscreen, isOpenThumbs, stageRef } = props;
   const [loadImage, setLoadImage] = useState<HTMLImageElement>();
   const [sizeImage, setSizeImage] = useState({ width: 0, height: 0 });
 
@@ -44,14 +52,39 @@ export default function PGStage(props: Props) {
   }, [image, isFullscreen, isOpenThumbs]);
 
   return (
-    <div className="gl-stage" ref={stageRef}>
+    <div className="gl-stage__item">
+      <div
+        className="gl-stage__item__content"
+        style={{ width: sizeImage.width, height: sizeImage.height }}
+      >
+        <img src={loadImage?.src} alt="" className="gl-stage__image" />
+      </div>
+    </div>
+  );
+}
+
+export default function PGStage(props: Props) {
+  const { images, numberOfImages, currentImageIndex, ...otherProps } = props;
+  const stageRef = useRef<any>(null);
+
+  return (
+    <div
+      className="gl-stage"
+      ref={stageRef}
+      style={{
+        left: `${-currentImageIndex * 100}%`,
+        width: `${numberOfImages * 100}%`,
+      }}
+    >
       <div className="gl-stage__slide">
-        <div
-          className="gl-stage__content"
-          style={{ width: sizeImage.width, height: sizeImage.height }}
-        >
-          <img src={loadImage?.src} alt="" className="gl-stage__image" />
-        </div>
+        {images.map((image, index) => (
+          <PGStageItem
+            key={index}
+            image={image}
+            stageRef={stageRef}
+            {...otherProps}
+          />
+        ))}
       </div>
     </div>
   );
