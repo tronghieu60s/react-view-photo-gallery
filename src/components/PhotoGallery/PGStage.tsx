@@ -11,6 +11,7 @@ type Props = {
 
 type PropsItem = {
   image: ImageType;
+  numberOfImages: number;
   isFullscreen: boolean;
   isOpenThumbs: boolean;
   stageRef: React.MutableRefObject<any>;
@@ -20,7 +21,7 @@ const STAGE_WIDTH_SUBTRACT = 40;
 const STAGE_HEIGHT_SUBTRACT = 120;
 
 export function PGStageItem(props: PropsItem) {
-  const { image, isFullscreen, isOpenThumbs, stageRef } = props;
+  const { image, numberOfImages, isFullscreen, isOpenThumbs, stageRef } = props;
   const [loadImage, setLoadImage] = useState<HTMLImageElement>();
   const [sizeImage, setSizeImage] = useState({ width: 0, height: 0 });
 
@@ -34,7 +35,8 @@ export function PGStageItem(props: PropsItem) {
     };
 
     function loadSizeImage() {
-      const widthStage = stageRef?.current?.clientWidth - STAGE_WIDTH_SUBTRACT;
+      const widthStage =
+        stageRef?.current?.clientWidth / numberOfImages - STAGE_WIDTH_SUBTRACT;
       const heightStage =
         stageRef?.current?.clientHeight - STAGE_HEIGHT_SUBTRACT;
       let ratioSize = loadImage.height / heightStage;
@@ -81,6 +83,7 @@ export default function PGStage(props: Props) {
           <PGStageItem
             key={index}
             image={image}
+            numberOfImages={numberOfImages}
             stageRef={stageRef}
             {...otherProps}
           />
