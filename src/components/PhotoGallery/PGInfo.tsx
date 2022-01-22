@@ -1,4 +1,5 @@
-import { ImageType } from "../../common/types";
+import React from 'react';
+import { ImageType } from '../../common/types';
 
 type Props = {
   images: Array<ImageType>;
@@ -9,7 +10,9 @@ export default function PGInfo(props: Props) {
   const { images, currentImageIndex } = props;
   return (
     <div className="gl-info">
-      <span>{currentImageIndex + 1}</span> / <span>{images.length}</span>
+      <span>{currentImageIndex + 1}</span>
+      {' / '}
+      <span>{images.length}</span>
     </div>
   );
 }

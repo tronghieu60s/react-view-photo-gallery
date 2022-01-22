@@ -1,5 +1,5 @@
-import { memo } from "react";
-import { ImageType } from "../../common/types";
+import React, { memo } from 'react';
+import { ImageType } from '../../common/types';
 
 type Props = {
   images: Array<ImageType>;
@@ -13,7 +13,7 @@ export default memo(function PGCaption(props: Props) {
   return (
     <div className="gl-caption">
       <div className="gl-caption__body">
-        <h4>{name || src.split("/").pop()}</h4>
+        <h4>{name || src.split('/').pop()}</h4>
         <span>{caption || new Date().toUTCString()}</span>
       </div>
     </div>

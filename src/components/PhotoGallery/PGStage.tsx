@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { ImageType } from "../../common/types";
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { ImageType } from '../../common/types';
 
 type Props = {
   images: Array<ImageType>;
@@ -21,31 +21,33 @@ const STAGE_HEIGHT_SUBTRACT = 120;
 
 export function PGStageItem(props: PropsItem) {
   const { image, numberImages, isFullscreen, isOpenThumbs, stageRef } = props;
-  const [loadImage, setLoadImage] = useState<HTMLImageElement>();
+  const [loadImage, setLoadImage] = useState<any>();
   const [sizeImage, setSizeImage] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    const loadImage = new Image();
-    loadImage.src = image.src;
-    loadImage.onload = () => {
+    /* eslint-disable no-use-before-define */
+    const imageL = new Image();
+    imageL.src = image.src;
+    imageL.onload = () => {
       loadSizeImage();
-      setLoadImage(loadImage);
-      window.addEventListener("resize", loadSizeImage);
+      setLoadImage(imageL);
+      window.addEventListener('resize', loadSizeImage);
     };
 
     function loadSizeImage() {
-      const widthStage =
-        stageRef?.current?.clientWidth / numberImages - STAGE_WIDTH_SUBTRACT;
-      const heightStage =
-        stageRef?.current?.clientHeight - STAGE_HEIGHT_SUBTRACT;
-      let ratioSize = loadImage.height / heightStage;
-      let widthImage = loadImage.width / ratioSize;
-      let heightImage = heightStage;
+      let widthImage = 0;
+      let heightImage = 0;
+      const width = imageL?.width;
+      const height = imageL?.height;
+      const { clientWidth, clientHeight } = stageRef?.current || null;
+      const widthStage = clientWidth / numberImages - STAGE_WIDTH_SUBTRACT;
+      const heightStage = clientHeight - STAGE_HEIGHT_SUBTRACT;
 
+      widthImage = width / (height / heightStage);
+      heightImage = heightStage;
       if (widthImage > widthStage) {
-        ratioSize = loadImage.width / widthStage;
         widthImage = widthStage;
-        heightImage = loadImage.height / ratioSize;
+        heightImage = height / (width / widthStage);
       }
 
       setSizeImage({ width: widthImage, height: heightImage });
@@ -80,6 +82,7 @@ export default function PGStage(props: Props) {
       <div className="gl-stage__slide">
         {images.map((image, index) => (
           <PGStageItem
+            // eslint-disable-next-line react/no-array-index-key
             key={index}
             image={image}
             numberImages={images.length}

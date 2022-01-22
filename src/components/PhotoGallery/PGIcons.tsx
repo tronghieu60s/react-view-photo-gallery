@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function IconsArrowPrevious() {
   return (
     <svg viewBox="0 0 24 24">
@@ -43,7 +45,7 @@ export function IconsFullscreen() {
 export function IconsExitFullscreen() {
   return (
     <svg viewBox="0 0 24 24">
-      <path d="M10 4H8v4H4v2h6zM8 20h2v-6H4v2h4zm12-6h-6v6h2v-4h4zm0-6h-4V4h-2v6h6z"></path>
+      <path d="M10 4H8v4H4v2h6zM8 20h2v-6H4v2h4zm12-6h-6v6h2v-4h4zm0-6h-4V4h-2v6h6z" />
     </svg>
   );
 }
@@ -60,8 +62,8 @@ export function IconsPlayCircle() {
 export function IconsStopCircle() {
   return (
     <svg viewBox="0 0 24 24">
-      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path>
-      <path d="M9 9h6v6H9z"></path>
+      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+      <path d="M9 9h6v6H9z" />
     </svg>
   );
 }

@@ -1,5 +1,6 @@
-import { ImageType } from "../../common/types";
-import { IconsArrowNext, IconsArrowPrevious } from "./PGIcons";
+import React from 'react';
+import { ImageType } from '../../common/types';
+import { IconsArrowNext, IconsArrowPrevious } from './PGIcons';
 
 type Props = {
   images: Array<ImageType>;
@@ -10,8 +11,9 @@ type Props = {
 export default function PGNavigation(props: Props) {
   const { images, onPreviousImage, onNextImage } = props;
   return (
-    <div className={`gl-navigation${images.length > 1 ? "" : " gl-d-none"}`}>
+    <div className={`gl-navigation${images.length > 1 ? '' : ' gl-d-none'}`}>
       <button
+        type="button"
         className="gl-button gl-navigation__left"
         title="Previous"
         onClick={onPreviousImage}
@@ -19,6 +21,7 @@ export default function PGNavigation(props: Props) {
         <IconsArrowPrevious />
       </button>
       <button
+        type="button"
         className="gl-button gl-navigation__right"
         title="Next"
         onClick={onNextImage}
