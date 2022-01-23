@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ImageType } from '../../common/types';
 import { IconsArrowNext, IconsArrowPrevious } from './PGIcons';
 
@@ -8,7 +8,7 @@ type Props = {
   onNextImage: () => void;
 };
 
-export default function PGNavigation(props: Props) {
+export default memo(function PGNavigation(props: Props) {
   const { images, onPreviousImage, onNextImage } = props;
   return (
     <div className={`gl-navigation${images.length > 1 ? '' : ' gl-d-none'}`}>
@@ -30,4 +30,4 @@ export default function PGNavigation(props: Props) {
       </button>
     </div>
   );
-}
+});

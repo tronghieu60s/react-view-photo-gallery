@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { ImageType } from '../../common/types';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   onPressThumbsItem: (index: number) => void;
 };
 
-export default function PGThumbs(props: Props) {
+export default memo(function PGThumbs(props: Props) {
   const thumbsRef = useRef<any>(null);
   const thumbsItemRef = useRef<any>(null);
   const [widthThumbsList, setWidthThumbsList] = useState(0);
@@ -44,4 +44,4 @@ export default function PGThumbs(props: Props) {
       </div>
     </div>
   );
-}
+});

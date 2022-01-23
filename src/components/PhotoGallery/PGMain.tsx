@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { ImageType, PhotoGalleryProps } from '../../common/types';
 import ParametersContext from '../../contexts/ParametersContext';
 import PGCaption from './PGCaption';
@@ -26,7 +26,7 @@ type Props = {
   onNextImage: () => void;
 };
 
-export default function PGMain(props: Props) {
+export default memo(function PGMain(props: Props) {
   const {
     isFullscreen,
     isSlideshow,
@@ -78,4 +78,4 @@ export default function PGMain(props: Props) {
       />
     </div>
   );
-}
+});

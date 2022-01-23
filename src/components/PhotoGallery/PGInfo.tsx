@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ImageType } from '../../common/types';
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   currentImageIndex: number;
 };
 
-export default function PGInfo(props: Props) {
+export default memo(function PGInfo(props: Props) {
   const { images, currentImageIndex } = props;
   return (
     <div className="gl-info">
@@ -15,4 +15,4 @@ export default function PGInfo(props: Props) {
       <span>{images.length}</span>
     </div>
   );
-}
+});

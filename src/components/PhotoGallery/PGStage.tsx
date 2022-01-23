@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { ImageType } from '../../common/types';
 
 type Props = {
@@ -66,7 +66,7 @@ export function PGStageItem(props: PropsItem) {
   );
 }
 
-export default function PGStage(props: Props) {
+export default memo(function PGStage(props: Props) {
   const { images, currentImageIndex, ...otherProps } = props;
   const stageRef = useRef<any>(null);
 
@@ -93,4 +93,4 @@ export default function PGStage(props: Props) {
       </div>
     </div>
   );
-}
+});

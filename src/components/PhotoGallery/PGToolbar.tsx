@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {
   IconsDownload,
   IconsExitFullscreen,
@@ -22,7 +22,7 @@ type Props = {
   onToggleShowPG: () => void;
 };
 
-export default function PGToolbar(props: Props) {
+export default memo(function PGToolbar(props: Props) {
   const { isFullscreen, isSlideshow } = props;
   const {
     onOpenExternalLink,
@@ -63,4 +63,4 @@ export default function PGToolbar(props: Props) {
       </button>
     </div>
   );
-}
+});

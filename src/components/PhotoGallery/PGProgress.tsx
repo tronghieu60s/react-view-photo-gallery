@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 type Props = { currentProgress: number };
 
-export default function PGProgress({ currentProgress }: Props) {
+export default memo(function PGProgress({ currentProgress }: Props) {
   const progressStyles = currentProgress > 0 ? { transform: 'scaleX(1)' } : {};
   return (
     <div
@@ -10,4 +10,4 @@ export default function PGProgress({ currentProgress }: Props) {
       style={{ ...progressStyles, transitionDuration: `${currentProgress}ms` }}
     />
   );
-}
+});
