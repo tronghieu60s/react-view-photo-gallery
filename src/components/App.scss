@@ -1,7 +1,13 @@
 .header {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 30px;
-  h2, span {
+  h2,
+  span {
+    text-align: center;
     margin-bottom: 0;
   }
 }
@@ -12,27 +18,33 @@
 }
 
 .row {
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   padding: 0 4px;
+  margin: auto;
   .column {
-    flex: 24%;
+    flex: 25%;
     max-width: 25%;
-    padding: 0 4px;
-    @media screen and (max-width: 800px) {
+    // padding: 0 4px;
+    @media screen and (max-width: 768px) {
       flex: 50%;
       max-width: 50%;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 576px) {
       flex: 100%;
       max-width: 100%;
     }
-    img {
+    .item {
       width: 100%;
-      margin-top: 8px;
-      vertical-align: middle;
+      padding: 8px;
       border-radius: 5px;
+      box-sizing: border-box;
+      vertical-align: middle;
       cursor: pointer;
+      img {
+        width: 100%;
+      }
     }
   }
 }

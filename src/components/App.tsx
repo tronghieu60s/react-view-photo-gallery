@@ -29,7 +29,7 @@ export default function App() {
       }
 
       return arr;
-    };
+    }
   }, []);
 
   if (images.length === 0) {
@@ -50,22 +50,30 @@ export default function App() {
       <div className="row">
         <div className="column">
           {images.slice(0, 5).map((image: ImageType) => (
-            <img key={image.src} src={image.src} onClick={() => setShowGallery(true)} />
+            <div key={image.src} className="item">
+              <img src={image.src} onClick={() => setShowGallery(true)} />
+            </div>
           ))}
         </div>
         <div className="column">
           {images.slice(5, 10).map((image: ImageType) => (
-            <img key={image.src} src={image.src} onClick={() => setShowGallery(true)} />
+            <div key={image.src} className="item">
+              <img src={image.src} onClick={() => setShowGallery(true)} />
+            </div>
           ))}
         </div>
         <div className="column">
           {images.slice(10, 15).map((image: ImageType) => (
-            <img key={image.src} src={image.src} onClick={() => setShowGallery(true)} />
+            <div key={image.src} className="item">
+              <img src={image.src} onClick={() => setShowGallery(true)} />
+            </div>
           ))}
         </div>
         <div className="column">
           {images.slice(15, 20).map((image: ImageType) => (
-            <img key={image.src} src={image.src} onClick={() => setShowGallery(true)} />
+            <div key={image.src} className="item">
+              <img src={image.src} onClick={() => setShowGallery(true)} />
+            </div>
           ))}
         </div>
       </div>
