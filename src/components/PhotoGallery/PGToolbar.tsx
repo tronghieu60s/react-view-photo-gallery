@@ -48,7 +48,7 @@ export default function PGToolbar(props: Props) {
         type="button"
         onClick={onToggleSlideshow}
         className="gl-button"
-        title="Start slideshow"
+        title={`${isSlideshow ? 'Stop' : 'Start'} slideshow`}
       >
         {isSlideshow ? <IconsStopCircle /> : <IconsPlayCircle />}
       </button>

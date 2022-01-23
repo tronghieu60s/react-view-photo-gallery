@@ -1,18 +1,19 @@
-$thumb-size: 150px;
 $thumb-size-mobile: 75px;
+$thumb-size-tablet: 120px;
+$thumb-size-desktop: 150px;
 
 // -----------------------------
 // Style Common Mixin ----------
 // -----------------------------
 
 @mixin visible {
-  visibility: visible;
   opacity: 1;
+  visibility: visible;
 }
 
 @mixin hidden {
-  visibility: hidden;
   opacity: 0;
+  visibility: hidden;
 }
 
 @mixin square($size: 0) {
@@ -65,12 +66,26 @@ $thumb-size-mobile: 75px;
   @include user-select-none;
   @include fixed($top: 0, $left: 0);
   @include square(100%);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   outline: none;
   z-index: 100000;
   transition: 0.4s;
   &.active {
     @include visible();
+  }
+  &.thumbs-active {
+    .gl-inner {
+      bottom: $thumb-size-desktop;
+      @media (max-width: 768px) {
+        bottom: $thumb-size-tablet;
+      }
+      @media (max-width: 425px) {
+        bottom: $thumb-size-mobile;
+      }
+    }
+    .gl-thumbs {
+      @include visible();
+    }
   }
 }
 
@@ -84,7 +99,7 @@ $thumb-size-mobile: 75px;
   @include absolute(0, 0, 0, 0);
   backdrop-filter: blur(5px);
   overflow: hidden;
-  z-index: 110000;
+  z-index: 1000;
 }
 
 .gl-button {
@@ -213,11 +228,9 @@ $thumb-size-mobile: 75px;
   overflow-x: auto;
   z-index: 110000;
   transition: 0.4s;
-  &.active {
-    @include visible();
-  }
   &__list {
     @include square(100%);
+    display: flex;
     font-size: 0;
     list-style: none;
     white-space: nowrap;
@@ -227,7 +240,7 @@ $thumb-size-mobile: 75px;
     overflow-x: hidden;
     overflow-y: auto;
     &__item {
-      @include square($thumb-size);
+      @include square($thumb-size-desktop);
       position: relative;
       backface-visibility: hidden;
       background-color: rgba(0, 0, 0, 0.1);
@@ -241,9 +254,15 @@ $thumb-size-mobile: 75px;
       margin: 4px;
       padding: 0;
       border-radius: 5px;
+      @media (max-width: 768px) {
+        @include square($thumb-size-tablet);
+      }
+      @media (max-width: 425px) {
+        @include square($thumb-size-mobile);
+      }
       &::before {
         @include absolute(0, 0, 0, 0);
-        content: "";
+        content: '';
       }
       &.active {
         &::before {

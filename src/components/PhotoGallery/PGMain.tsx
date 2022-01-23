@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { ImageType, PhotoGalleryProps } from '../../common/types';
 import ParametersContext from '../../contexts/ParametersContext';
 import PGCaption from './PGCaption';
@@ -26,10 +26,6 @@ type Props = {
   onNextImage: () => void;
 };
 
-const MOBILE_SIZE_IMAGE = 75;
-const TABLET_SIZE_IMAGE = 120;
-const DESKTOP_SIZE_IMAGE = 150;
-
 export default function PGMain(props: Props) {
   const {
     isFullscreen,
@@ -48,30 +44,12 @@ export default function PGMain(props: Props) {
     onNextImage,
   } = props;
 
-  const [sizeThumbs, setSizeThumbs] = useState(0);
-
   const { show, onShow } = useContext<PhotoGalleryProps>(ParametersContext);
 
-  const handleSizeThumbs = useCallback(() => {
-    const widthWindow = window.screen.width;
-    if (widthWindow < 425) {
-      setSizeThumbs(MOBILE_SIZE_IMAGE);
-    } else if (widthWindow < 768) {
-      setSizeThumbs(TABLET_SIZE_IMAGE);
-    } else {
-      setSizeThumbs(DESKTOP_SIZE_IMAGE);
-    }
-  }, []);
-
-  useEffect(() => {
-    handleSizeThumbs();
-    window.addEventListener('resize', handleSizeThumbs);
-  }, []);
-
   return (
-    <div className={`gl-container${show ? ' active' : ''}`}>
+    <div className={`gl-container${show ? ' active' : ''}${isOpenThumbs ? ' thumbs-active' : ''}`}>
       <div className="gl-bg" />
-      <div className="gl-inner" style={{ bottom: isOpenThumbs ? sizeThumbs : 0 }}>
+      <div className="gl-inner">
         <PGInfo images={images} currentImageIndex={currentImageIndex} />
         <PGToolbar
           isFullscreen={isFullscreen}
@@ -96,8 +74,6 @@ export default function PGMain(props: Props) {
       <PGThumbs
         images={images}
         currentImageIndex={currentImageIndex}
-        sizeThumbs={sizeThumbs}
-        isOpenThumbs={isOpenThumbs}
         onPressThumbsItem={onPressThumbsItem}
       />
     </div>

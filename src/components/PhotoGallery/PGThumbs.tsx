@@ -1,49 +1,46 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ImageType } from '../../common/types';
 
 type Props = {
   images: Array<ImageType>;
   currentImageIndex: number;
-  sizeThumbs: number;
-  isOpenThumbs: boolean;
   onPressThumbsItem: (index: number) => void;
 };
 
 export default function PGThumbs(props: Props) {
   const thumbsRef = useRef<any>(null);
   const thumbsItemRef = useRef<any>(null);
-  const { images, currentImageIndex, sizeThumbs, isOpenThumbs, onPressThumbsItem } = props;
+  const [widthThumbsList, setWidthThumbsList] = useState(0);
+  const { images, currentImageIndex, onPressThumbsItem } = props;
+
+  function loadSizeThumbs() {
+    const width = images.length * thumbsItemRef?.current?.clientHeight + 9;
+    setWidthThumbsList(width);
+  }
 
   useEffect(() => {
-    const thumbsItemLeft = thumbsItemRef?.current?.offsetLeft;
-    thumbsRef.current.scrollLeft = thumbsItemLeft;
+    thumbsRef.current.scrollLeft = thumbsItemRef?.current?.offsetLeft;
+    loadSizeThumbs();
+    window.addEventListener('resize', loadSizeThumbs);
   }, [currentImageIndex]);
 
-  const renderItems = () => {
-    return images.map((image, index) => {
-      const active = currentImageIndex === index;
-      return (
-        <div
-          // eslint-disable-next-line react/no-array-index-key
-          key={index}
-          ref={active ? thumbsItemRef : null}
-          style={{
-            width: sizeThumbs,
-            height: sizeThumbs,
-            backgroundImage: `url(${image.src})`,
-          }}
-          className={`gl-thumbs__list__item${active ? ' active' : ''}`}
-          onClick={() => onPressThumbsItem(index)}
-          aria-hidden="true"
-        />
-      );
-    });
-  };
-
   return (
-    <div className={`gl-thumbs${isOpenThumbs ? ' active' : ''}`} ref={thumbsRef}>
-      <div className="gl-thumbs__list" style={{ width: images.length * (sizeThumbs + 9) }}>
-        {renderItems()}
+    <div className="gl-thumbs" ref={thumbsRef}>
+      <div className="gl-thumbs__list" style={{ width: widthThumbsList }}>
+        {images.map((image, index) => {
+          const active = currentImageIndex === index;
+          return (
+            <div
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              ref={active ? thumbsItemRef : null}
+              style={{ backgroundImage: `url(${image.src})` }}
+              className={`gl-thumbs__list__item${active ? ' active' : ''}`}
+              onClick={() => onPressThumbsItem(index)}
+              aria-hidden="true"
+            />
+          );
+        })}
       </div>
     </div>
   );
