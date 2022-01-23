@@ -4,6 +4,8 @@ object-assign
 @license MIT
 */
 
+/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./App.scss */
+
 /*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./PhotoGallery.scss */
 
 /*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */
@@ -29,6 +31,8 @@ object-assign
 /*! ../helpers/commonFunctions */
 
 /*! ../src/components/App */
+
+/*! ./App.scss */
 
 /*! ./PGCaption */
 
@@ -81,6 +85,10 @@ object-assign
 /*!********************************!*\
   !*** ./src/components/App.tsx ***!
   \********************************/
+
+/*!*********************************!*\
+  !*** ./src/components/App.scss ***!
+  \*********************************/
 
 /*!*************************************!*\
   !*** ./node_modules/react/index.js ***!
@@ -209,6 +217,10 @@ object-assign
 /*!**********************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js ***!
   \**********************************************************************************/
+
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/App.scss ***!
+  \**************************************************************************************************************/
 
 /*!***********************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/PhotoGallery.scss ***!
