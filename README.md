@@ -1,12 +1,10 @@
-# React View Photo Gallery
-
 ## What is this?
 
 📸 A react library helpful render photos in awesome gallery.
 
 ## Demo
 
-https://tronghieuit.me/react-view-photo-gallery/
+https://tronghieu60s.github.io/react-view-photo-gallery/
 
 ## Preview
 
