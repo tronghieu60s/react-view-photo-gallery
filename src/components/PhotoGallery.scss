@@ -91,8 +91,8 @@ $thumb-size-desktop: 150px;
 
 .gl-bg {
   @include absolute(0, 0, 0, 0);
-  opacity: 0.9;
   background: #1e1e1e;
+  opacity: 0.9;
 }
 
 .gl-inner {
@@ -104,14 +104,18 @@ $thumb-size-desktop: 150px;
 
 .gl-button {
   @include square(44px);
-  line-height: 35px;
-  font-size: 0.95em;
-  background: rgba(30, 30, 30, 0.6);
+
   display: inline-block;
+
+  font-size: 0.95em;
+  line-height: 35px;
+  background: rgba(30, 30, 30, 0.6);
+
   padding: 10px;
   border: 0;
   border-radius: 0;
   box-shadow: none;
+
   cursor: pointer;
   svg {
     @include square(20px);
@@ -127,10 +131,12 @@ $thumb-size-desktop: 150px;
 
 .gl-info {
   @include absolute($top: 0, $left: 0);
-  color: #ccc;
-  font-size: 0.85em;
   height: 44px;
+
+  font-size: 0.85em;
   line-height: 44px;
+  color: #ccc;
+
   padding: 0 10px;
 }
 
@@ -145,10 +151,10 @@ $thumb-size-desktop: 150px;
   &__left,
   &__right {
     @include absolute($top: 50%, $left: 0);
-    transform: translateY(-50%);
-    margin: 0 1em;
     border-radius: 5px;
+    margin: 0 1em;
     z-index: 10;
+    transform: translateY(-50%);
   }
   &__right {
     @include absolute($top: 50%, $right: 0);
@@ -156,10 +162,8 @@ $thumb-size-desktop: 150px;
 }
 
 .gl-stage {
-  position: absolute;
-  left: 0%;
-  width: 100%;
-  height: 100%;
+  @include square(100%);
+  @include absolute($left: 0);
   overflow: hidden;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   &__item {
@@ -173,8 +177,7 @@ $thumb-size-desktop: 150px;
   }
   &__slide {
     @include flex-center;
-    width: 100%;
-    height: 100%;
+    @include square(100%);
   }
   &__image {
     @include square(100%);
@@ -183,7 +186,13 @@ $thumb-size-desktop: 150px;
 }
 
 .gl-caption {
-  @include absolute($left: 0, $right: 0);
+  @include absolute($left: 0, $right: 0, $bottom: 0);
+
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #eee;
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.85) 0%,
@@ -194,14 +203,9 @@ $thumb-size-desktop: 150px;
     rgba(0, 0, 0, 0.019) 88%,
     rgba(0, 0, 0, 0) 100%
   );
-  bottom: 0;
-  color: #eee;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5;
+
   padding: 75px 44px 25px 44px;
   pointer-events: none;
-  text-align: center;
   z-index: 110000;
   &__body {
     max-height: 50vh;
@@ -219,24 +223,27 @@ $thumb-size-desktop: 150px;
 .gl-thumbs {
   @include hidden();
   @include absolute(auto, 0, 0, 0);
-  width: auto;
-  height: auto;
+  @include square(auto);
+  background: rgba(0, 0, 0, 0.3);
+
   padding: 0 10px;
   box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.3);
   scroll-behavior: smooth;
+
   overflow-x: auto;
   z-index: 110000;
   transition: 0.4s;
   &__list {
     @include square(100%);
-    display: flex;
-    font-size: 0;
-    list-style: none;
-    white-space: nowrap;
     position: relative;
-    margin: 0;
+    display: flex;
+    list-style: none;
+
+    font-size: 0;
+    white-space: nowrap;
+
     padding: 0;
+    margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
     &__item {
@@ -247,13 +254,15 @@ $thumb-size-desktop: 150px;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      cursor: pointer;
+
+      border-radius: 5px;
+      padding: 0;
+      margin: 4px;
+
       float: left;
       outline: none;
       overflow: hidden;
-      margin: 4px;
-      padding: 0;
-      border-radius: 5px;
+      cursor: pointer;
       @media (max-width: 768px) {
         @include square($thumb-size-tablet);
       }
@@ -276,8 +285,9 @@ $thumb-size-desktop: 150px;
 
 .gl-progress {
   @include absolute($top: 0, $right: 0, $left: 0);
-  background: #f2930d;
   height: 2px;
+  background: #f2930d;
+
   transform: scaleX(0);
   transform-origin: 0;
   transition-property: transform;
@@ -289,8 +299,7 @@ $thumb-size-desktop: 150px;
 //  Style Scroll Bar -----------
 // -----------------------------
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  @include square(4px);
   &-track {
     background: #f4f5f7;
   }
