@@ -59,6 +59,23 @@ $thumb-size-desktop: 150px;
 }
 
 // -----------------------------
+//  Style Scroll Bar -----------
+// -----------------------------
+::-webkit-scrollbar {
+  @include square(4px);
+  &-track {
+    background: #f4f5f7;
+  }
+  &-thumb {
+    border-radius: 2px;
+    background: #2b2e34;
+    &:hover {
+      background: #555;
+    }
+  }
+}
+
+// -----------------------------
 // Style Photo Gallery ---------
 // -----------------------------
 .gl-container {
@@ -104,18 +121,14 @@ $thumb-size-desktop: 150px;
 
 .gl-button {
   @include square(44px);
-
   display: inline-block;
-
   font-size: 0.95em;
   line-height: 35px;
   background: rgba(30, 30, 30, 0.6);
-
   padding: 10px;
   border: 0;
   border-radius: 0;
   box-shadow: none;
-
   cursor: pointer;
   svg {
     @include square(20px);
@@ -132,11 +145,9 @@ $thumb-size-desktop: 150px;
 .gl-info {
   @include absolute($top: 0, $left: 0);
   height: 44px;
-
   font-size: 0.85em;
   line-height: 44px;
   color: #ccc;
-
   padding: 0 10px;
 }
 
@@ -187,7 +198,6 @@ $thumb-size-desktop: 150px;
 
 .gl-caption {
   @include absolute($left: 0, $right: 0, $bottom: 0);
-
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -203,7 +213,6 @@ $thumb-size-desktop: 150px;
     rgba(0, 0, 0, 0.019) 88%,
     rgba(0, 0, 0, 0) 100%
   );
-
   padding: 75px 44px 25px 44px;
   pointer-events: none;
   z-index: 110000;
@@ -225,11 +234,9 @@ $thumb-size-desktop: 150px;
   @include absolute(auto, 0, 0, 0);
   @include square(auto);
   background: rgba(0, 0, 0, 0.3);
-
   padding: 0 10px;
   box-sizing: border-box;
   scroll-behavior: smooth;
-
   overflow-x: auto;
   z-index: 110000;
   transition: 0.4s;
@@ -238,10 +245,8 @@ $thumb-size-desktop: 150px;
     position: relative;
     display: flex;
     list-style: none;
-
     font-size: 0;
     white-space: nowrap;
-
     padding: 0;
     margin: 0;
     overflow-x: hidden;
@@ -254,11 +259,9 @@ $thumb-size-desktop: 150px;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-
       border-radius: 5px;
       padding: 0;
       margin: 4px;
-
       float: left;
       outline: none;
       overflow: hidden;
@@ -287,27 +290,9 @@ $thumb-size-desktop: 150px;
   @include absolute($top: 0, $right: 0, $left: 0);
   height: 2px;
   background: #f2930d;
-
   transform: scaleX(0);
   transform-origin: 0;
   transition-property: transform;
   transition-timing-function: linear;
   z-index: 110000;
-}
-
-// -----------------------------
-//  Style Scroll Bar -----------
-// -----------------------------
-::-webkit-scrollbar {
-  @include square(4px);
-  &-track {
-    background: #f4f5f7;
-  }
-  &-thumb {
-    border-radius: 2px;
-    background: #2b2e34;
-    &:hover {
-      background: #555;
-    }
-  }
 }

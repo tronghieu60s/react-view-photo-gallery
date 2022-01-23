@@ -1,0 +1,38 @@
+.header {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 30px;
+  h2, span {
+    margin-bottom: 0;
+  }
+}
+
+.footer {
+  text-align: center;
+  margin: 30px 0 20px 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  .column {
+    flex: 24%;
+    max-width: 25%;
+    padding: 0 4px;
+    @media screen and (max-width: 800px) {
+      flex: 50%;
+      max-width: 50%;
+    }
+    @media screen and (max-width: 600px) {
+      flex: 100%;
+      max-width: 100%;
+    }
+    img {
+      width: 100%;
+      margin-top: 8px;
+      vertical-align: middle;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}
