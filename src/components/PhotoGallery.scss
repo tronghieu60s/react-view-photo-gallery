@@ -59,23 +59,6 @@ $thumb-size-desktop: 150px;
 }
 
 // -----------------------------
-//  Style Scroll Bar -----------
-// -----------------------------
-::-webkit-scrollbar {
-  @include square(4px);
-  &-track {
-    background: #f4f5f7;
-  }
-  &-thumb {
-    border-radius: 2px;
-    background: #2b2e34;
-    &:hover {
-      background: #555;
-    }
-  }
-}
-
-// -----------------------------
 // Style Photo Gallery ---------
 // -----------------------------
 .gl-container {
@@ -281,6 +264,19 @@ $thumb-size-desktop: 150px;
           border: 2px solid #eee;
           background: radial-gradient(transparent, rgba(0, 0, 0, 0.75));
         }
+      }
+    }
+  }
+  &::-webkit-scrollbar {
+    @include square(4px);
+    &-track {
+      background: #f4f5f7;
+    }
+    &-thumb {
+      border-radius: 2px;
+      background: #2b2e34;
+      &:hover {
+        background: #555;
       }
     }
   }
