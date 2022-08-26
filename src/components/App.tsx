@@ -2,34 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { ImageType } from '../common/types';
 import PhotoGallery from './PhotoGallery';
 import './App.scss';
+import { shuffleArr } from '../helpers/commonFunctions';
 
 export default function App() {
   const [showGallery, setShowGallery] = useState(false);
   const [images, setImage] = useState<ImageType[]>([]);
 
   useEffect(() => {
-    const arrImages = [];
-    for (let index = 1; index <= 20; index += 1) {
-      arrImages.push({ src: `https://nekos.best/api/v1/nekos/${('0000' + index).slice(-4)}.jpg` });
-      setImage(shuffleArr(arrImages));
-    }
-
-    function shuffleArr(arr: any[]) {
-      let currentIndex = arr.length,
-        randomIndex;
-
-      // While there remain elements to shuffle...
-      while (currentIndex !== 0) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-
-        // And swap it with the current element.
-        [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
-      }
-
-      return arr;
-    }
+    (async () => {
+      const images = await fetch('https://dog.ceo/api/breeds/image/random/20')
+        .then((res) => res.json())
+        .then((res) => res.message.map((image: string) => ({ src: image })));
+      setImage(shuffleArr(images));
+    })();
   }, []);
 
   if (images.length === 0) {
