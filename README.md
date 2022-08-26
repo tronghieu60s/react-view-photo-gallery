@@ -53,20 +53,20 @@ export default function App() {
 
 ## Methods
 
-| Props          | Type                   | Description                                                     |
-| -------------- | ---------------------- | --------------------------------------------------------------- |
-| show           | (required) string      | Attribute show/hide `<PhotoGallery />`                          |
-| onShow         | (required) Function    | This function will make the switch show/hide `<PhotoGallery />` |
-| images         | (required) ImageType[] | Array for images                                                |
-| currentIndex   | (optional) number      | Index of current image                                          |
-| openLink       | (optional) string      | Path open link in new tab                                       |
-| showName       | (optional) boolean     | Show name of image                                              |
-| showCaption    | (optional) boolean     | Show caption of image                                           |
-| showOpenLink   | (optional) boolean     | Show open link button                                           |
-| showFullScreen | (optional) boolean     | Show full screen button                                         |
-| showSlideshow  | (optional) boolean     | Show slideshow button                                           |
-| showDownload   | (optional) boolean     | Show download button                                            |
-| showThumbnails | (optional) boolean     | Show thumbnails button                                          |
+| Props          | Type                   | Description                                     |
+| -------------- | ---------------------- | ----------------------------------------------- |
+| show           | (required) string      | Attribute show/hide `<PhotoGallery />`          |
+| onClose        | (required) Function    | This function will make hide `<PhotoGallery />` |
+| images         | (required) ImageType[] | Array for images                                |
+| currentIndex   | (optional) number      | Index of current image                          |
+| openLink       | (optional) string      | Path open link in new tab                       |
+| showName       | (optional) boolean     | Show name of image                              |
+| showCaption    | (optional) boolean     | Show caption of image                           |
+| showOpenLink   | (optional) boolean     | Show open link button                           |
+| showFullScreen | (optional) boolean     | Show full screen button                         |
+| showSlideshow  | (optional) boolean     | Show slideshow button                           |
+| showDownload   | (optional) boolean     | Show download button                            |
+| showThumbnails | (optional) boolean     | Show thumbnails button                          |
 
 ## License
 
