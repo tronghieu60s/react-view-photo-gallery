@@ -1,5 +1,5 @@
-import React from "react";
-import { PhotoGalleryProps } from "../common/types";
+import React from 'react';
+import { PhotoGalleryProps } from '../common/types';
 
 type PhotoGalleryContextProps = PhotoGalleryProps & {
   children?: JSX.Element;
@@ -7,22 +7,56 @@ type PhotoGalleryContextProps = PhotoGalleryProps & {
 
 const defaultParams: PhotoGalleryContextProps = {
   show: false,
-  onShow: () => {},
+  onClose: () => {},
   images: [],
+  currentIndex: 0,
+  showName: true,
+  showCaption: true,
+  showOpenLink: true,
+  showFullscreen: true,
+  showSlideshow: true,
+  showDownload: true,
+  showThumbnails: true,
 };
 
-const ParametersContext =
-  React.createContext<PhotoGalleryContextProps>(defaultParams);
+const ParametersContext = React.createContext<PhotoGalleryContextProps>(defaultParams);
 
 export const ParametersProvider = (props: PhotoGalleryContextProps) => {
-  const { children, show, onShow, images } = props;
+  const {
+    children,
+    show,
+    onClose,
+    images,
+    currentIndex = 0,
+    showName = true,
+    showCaption = true,
+    showOpenLink = true,
+    showFullscreen = true,
+    showSlideshow = true,
+    showDownload = true,
+    showThumbnails = true,
+  } = props;
 
   if (!images || images.length === 0) {
-    throw new Error("ParametersProvider: images should be provided");
+    throw new Error('ParametersProvider: images should be provided');
   }
 
   return (
-    <ParametersContext.Provider value={{ show, onShow, images }}>
+    <ParametersContext.Provider
+      value={{
+        show,
+        onClose,
+        images,
+        currentIndex,
+        showName,
+        showCaption,
+        showOpenLink,
+        showFullscreen,
+        showSlideshow,
+        showDownload,
+        showThumbnails,
+      }}
+    >
       {children}
     </ParametersContext.Provider>
   );

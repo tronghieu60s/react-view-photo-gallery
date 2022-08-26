@@ -16,14 +16,14 @@ type Props = {
   images: Array<ImageType>;
   currentImageIndex: number;
   currentProgress: number;
-  onOpenExternalLink: () => void;
-  onToggleFullScreen: () => void;
-  onToggleSlideshow: () => void;
   onDownloadImage: () => void;
-  onToggleThumbs: () => void;
+  onNextImage: () => void;
+  onOpenExternalLink: () => void;
   onPressThumbsItem: (index: number) => void;
   onPreviousImage: () => void;
-  onNextImage: () => void;
+  onToggleFullScreen: () => void;
+  onToggleSlideshow: () => void;
+  onToggleThumbs: () => void;
 };
 
 export default memo(function PGMain(props: Props) {
@@ -34,17 +34,17 @@ export default memo(function PGMain(props: Props) {
     images,
     currentImageIndex,
     currentProgress,
-    onOpenExternalLink,
-    onToggleFullScreen,
-    onToggleSlideshow,
     onDownloadImage,
-    onToggleThumbs,
+    onNextImage,
+    onOpenExternalLink,
     onPressThumbsItem,
     onPreviousImage,
-    onNextImage,
+    onToggleFullScreen,
+    onToggleSlideshow,
+    onToggleThumbs,
   } = props;
 
-  const { show, onShow } = useContext<PhotoGalleryProps>(ParametersContext);
+  const { show, onClose } = useContext<PhotoGalleryProps>(ParametersContext);
 
   return (
     <div className={`gl-container${show ? ' active' : ''}${isOpenThumbs ? ' thumbs-active' : ''}`}>
@@ -54,12 +54,12 @@ export default memo(function PGMain(props: Props) {
         <PGToolbar
           isFullscreen={isFullscreen}
           isSlideshow={isSlideshow}
+          onDownloadImage={onDownloadImage}
           onOpenExternalLink={onOpenExternalLink}
           onToggleFullScreen={onToggleFullScreen}
+          onCloseShowPG={onClose}
           onToggleSlideshow={onToggleSlideshow}
-          onDownloadImage={onDownloadImage}
           onToggleThumbs={onToggleThumbs}
-          onToggleShowPG={() => onShow(!show)}
         />
         <PGNavigation images={images} onPreviousImage={onPreviousImage} onNextImage={onNextImage} />
         <PGStage

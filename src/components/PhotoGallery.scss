@@ -136,6 +136,9 @@ $thumb-size-desktop: 150px;
 
 .gl-toolbar {
   @include absolute($top: 0, $right: 0);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   width: 264px;
   height: 44px;
   z-index: 10;
@@ -159,7 +162,7 @@ $thumb-size-desktop: 150px;
   @include square(100%);
   @include absolute($left: 0);
   overflow: hidden;
-  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 0s cubic-bezier(0.075, 0.82, 0.165, 1);
   &__item {
     width: 100%;
     &__content {

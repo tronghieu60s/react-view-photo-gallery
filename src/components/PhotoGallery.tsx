@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { PhotoGalleryProps } from '../common/types';
-import { ParametersProvider } from '../contexts/ParametersContext';
+import ParametersContext, { ParametersProvider } from '../contexts/ParametersContext';
 import { getFileExtension } from '../helpers/commonFunctions';
 import './PhotoGallery.scss';
 import PGMain from './PhotoGallery/PGMain';
@@ -8,13 +8,17 @@ import PGMain from './PhotoGallery/PGMain';
 const SLIDE_SHOW_MILLISECONDS = 3000;
 
 export default function PhotoGallery(props: PhotoGalleryProps) {
-  const { images } = props;
+  const { images, currentIndex = 0 } = props;
   const [currentProgress, setCurrentProgress] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isSlideshow, setIsSlideshow] = useState(false);
   const [isOpenThumbs, setIsOpenThumbs] = useState(false);
+
+  const { openLink } = useContext<PhotoGalleryProps>(ParametersContext);
+
+  useEffect(() => setCurrentImageIndex(currentIndex), [currentIndex]);
 
   const onPreviousImage = useCallback(() => {
     if (currentImageIndex > 0) {
@@ -87,7 +91,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
         isFullscreen={isFullscreen}
         isSlideshow={isSlideshow}
         isOpenThumbs={isOpenThumbs}
-        onOpenExternalLink={() => window.open(images[currentImageIndex].src, '_blank')}
+        onOpenExternalLink={() => openLink || window.open(images[currentImageIndex].src, '_blank')}
         onToggleFullScreen={onToggleFullScreen}
         onToggleSlideshow={() => setIsSlideshow(!isSlideshow)}
         onDownloadImage={onDownloadImage}

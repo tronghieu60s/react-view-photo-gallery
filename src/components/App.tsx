@@ -5,7 +5,7 @@ import './App.scss';
 import { shuffleArr } from '../helpers/commonFunctions';
 
 export default function App() {
-  const [showGallery, setShowGallery] = useState(false);
+  const [showGallery, setShowGallery] = useState({ show: false, index: 0 });
   const [images, setImage] = useState<ImageType[]>([]);
 
   useEffect(() => {
@@ -34,35 +34,49 @@ export default function App() {
       </header>
       <div className="row">
         <div className="column">
-          {images.slice(0, 5).map((image: ImageType) => (
+          {images.slice(0, 5).map((image: ImageType, index) => (
             <div key={image.src} className="item">
-              <img src={image.src} onClick={() => setShowGallery(true)} />
+              <img src={image.src} onClick={() => setShowGallery({ show: true, index })} />
             </div>
           ))}
         </div>
         <div className="column">
-          {images.slice(5, 10).map((image: ImageType) => (
+          {images.slice(5, 10).map((image: ImageType, index) => (
             <div key={image.src} className="item">
-              <img src={image.src} onClick={() => setShowGallery(true)} />
+              <img
+                src={image.src}
+                onClick={() => setShowGallery({ show: true, index: index + 5 })}
+              />
             </div>
           ))}
         </div>
         <div className="column">
-          {images.slice(10, 15).map((image: ImageType) => (
+          {images.slice(10, 15).map((image: ImageType, index) => (
             <div key={image.src} className="item">
-              <img src={image.src} onClick={() => setShowGallery(true)} />
+              <img
+                src={image.src}
+                onClick={() => setShowGallery({ show: true, index: index + 10 })}
+              />
             </div>
           ))}
         </div>
         <div className="column">
-          {images.slice(15, 20).map((image: ImageType) => (
+          {images.slice(15, 20).map((image: ImageType, index) => (
             <div key={image.src} className="item">
-              <img src={image.src} onClick={() => setShowGallery(true)} />
+              <img
+                src={image.src}
+                onClick={() => setShowGallery({ show: true, index: index + 15 })}
+              />
             </div>
           ))}
         </div>
       </div>
-      <PhotoGallery show={showGallery} onShow={setShowGallery} images={images} />
+      <PhotoGallery
+        show={showGallery.show}
+        onClose={() => setShowGallery({ show: false, index: showGallery.index })}
+        images={images}
+        currentIndex={showGallery.index}
+      />
       <footer className="footer">
         <span>© {new Date().getFullYear()}. React-View-Photo-Gallery</span>
       </footer>

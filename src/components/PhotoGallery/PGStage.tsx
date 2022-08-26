@@ -1,5 +1,6 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { ImageType } from '../../common/types';
+import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { ImageType, PhotoGalleryProps } from '../../common/types';
+import ParametersContext from '../../contexts/ParametersContext';
 
 type Props = {
   images: Array<ImageType>;
@@ -54,11 +55,20 @@ export function PGStageItem(props: PropsItem) {
     }
   }, [image, isFullscreen, isOpenThumbs]);
 
+  const { showName, showCaption } = useContext<PhotoGalleryProps>(ParametersContext);
+
+  const paddingBottom = useMemo(() => {
+    let value = 60;
+    if (!showName) value -= 30;
+    if (!showCaption) value -= 30;
+    return value;
+  }, []);
+
   return (
     <div className="gl-stage__item">
       <div
         className="gl-stage__item__content"
-        style={{ width: sizeImage.width, height: sizeImage.height }}
+        style={{ width: sizeImage.width, height: sizeImage.height, paddingBottom }}
       >
         <img src={loadImage?.src} alt="" className="gl-stage__image" />
       </div>
@@ -69,6 +79,18 @@ export function PGStageItem(props: PropsItem) {
 export default memo(function PGStage(props: Props) {
   const { images, currentImageIndex, ...otherProps } = props;
   const stageRef = useRef<any>(null);
+  const [transitionDuration, setTransitionDuration] = useState(0);
+
+  const { show } = useContext<PhotoGalleryProps>(ParametersContext);
+
+  useEffect(() => {
+    if (!show) {
+      setTransitionDuration(0);
+      return;
+    }
+    const timeout = setTimeout(() => setTransitionDuration(0.5), 100);
+    return () => clearTimeout(timeout);
+  }, [show]);
 
   return (
     <div
@@ -77,6 +99,7 @@ export default memo(function PGStage(props: Props) {
       style={{
         left: `${-currentImageIndex * 100}%`,
         width: `${images.length * 100}%`,
+        transitionDuration: `${transitionDuration}s`,
       }}
     >
       <div className="gl-stage__slide">

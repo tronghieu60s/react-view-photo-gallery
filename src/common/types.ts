@@ -6,6 +6,15 @@ export type ImageType = {
 
 export type PhotoGalleryProps = {
   show: boolean;
-  onShow: (show: boolean) => void;
+  onClose: () => void;
   images: Array<ImageType>;
+  currentIndex?: number;
+  openLink?: string;
+  showName?: boolean;
+  showCaption?: boolean;
+  showOpenLink?: boolean;
+  showFullscreen?: boolean;
+  showSlideshow?: boolean;
+  showDownload?: boolean;
+  showThumbnails?: boolean;
 };
