@@ -2,21 +2,11 @@
 
 📸 A react library helpful render photos in awesome gallery.
 
-## Demo
-
-https://tronghieu60s.github.io/react-view-photo-gallery/
-
 ## Preview
 
 ![Demo React-View-Photo-Gallery](https://i.imgur.com/GEii94Y.png)
 
 ## Installation
-
-Using npm:
-
-```bash
-$ npm install --save react-view-photo-gallery
-```
 
 Using yarn:
 
@@ -24,28 +14,39 @@ Using yarn:
 $ yarn add react-view-photo-gallery
 ```
 
+Using npm:
+
+```bash
+$ npm install --save react-view-photo-gallery
+```
+
+## Demo
+
+https://tronghieu60s.github.io/react-view-photo-gallery/
+
 ## Usage
 
 ```js
 import React, { useState } from 'react';
 import PhotoGallery from 'react-view-photo-gallery';
 
-const arrImages = [
-  { src: 'https://via.placeholder.com/500x500' },
-  { src: 'https://via.placeholder.com/1000x1000', name: 'Amazing Image' },
-  {
-    src: 'https://via.placeholder.com/1200x1800',
-    name: 'New Image',
-    caption: 'This image is so cool.',
-  },
-];
-
 export default function App() {
-  const [showGallery, setShowGallery] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const images = [
+    { src: 'https://place.dog/300/200' },
+    { src: 'https://place.dog/400/200', name: 'Dog Image 400x200' },
+    {
+      src: 'https://place.dog/400/300',
+      name: 'Dog Image 400x300',
+      caption: new Date().toLocaleString(),
+    },
+  ];
+
   return (
     <>
-      <button onClick={() => setShowGallery(true)}>Show</button>
-      <PhotoGallery show={showGallery} onShow={setShowGallery} images={arrImages} />
+      <button onClick={() => setShow(true)}>Show</button>
+      <PhotoGallery show={show} onClose={() => setShow(false)} images={images} />
     </>
   );
 }
